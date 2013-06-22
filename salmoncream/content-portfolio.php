@@ -8,55 +8,55 @@
 
 <?php if ( have_posts() ) : ?>
 
-	<?php /* Start the Loop */ ?>
-	<?php while ( have_posts() ) : the_post(); ?>
+    <?php /* Start the Loop */ ?>
+    <?php while ( have_posts() ) : the_post(); ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class('tile portfolio'); ?>>
+        <article id="post-<?php the_ID(); ?>" <?php post_class('tile portfolio'); ?>>
 
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+            <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>">
 
-				<?php if ( has_post_thumbnail() ) :
+                <?php if ( has_post_thumbnail() ) :
 
-					$hidpi_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'salmoncream-square@2x' );
+                    $hidpi_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'salmoncream-square@2x' );
 
-					if ( $hidpi_image && ( $hidpi_image[1] === 800 && $hidpi_image[2] === 800 ) ) {
+                    if ( $hidpi_image && ( $hidpi_image[1] === 800 && $hidpi_image[2] === 800 ) ) {
 
-						the_post_thumbnail('salmoncream-square@2x');
+                        the_post_thumbnail('salmoncream-square@2x');
 
-					} else {
+                    } else {
 
-						the_post_thumbnail('salmoncream-square');
+                        the_post_thumbnail('salmoncream-square');
 
-					}
+                    }
 
-				else : ?>
+                else : ?>
 
-					<img src="<?php echo get_template_directory_uri(); ?>/img/blank.png" alt="" width="800" height="800" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/blank.png" alt="" width="800" height="800" />
 
-				<?php endif; ?>
+                <?php endif; ?>
 
-			</a>
+            </a>
 
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="tile-content <?php if ( !has_post_thumbnail())  : ?> no-thumbnail<?php endif; ?>" rel="bookmark">
+            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="tile-content <?php if ( !has_post_thumbnail())  : ?> no-thumbnail<?php endif; ?>" rel="bookmark">
 
-				<h2 class="entry-title"><?php the_title(); ?></h2>
+                <h2 class="entry-title"><?php the_title(); ?></h2>
 
-				<?php $featured_skill = get_post_meta( $post->ID, '_salmoncream_portfolio_featured_skill', true ); ?>
+                <?php $featured_skill = get_post_meta( $post->ID, '_salmoncream_portfolio_featured_skill', true ); ?>
 
-				<?php if ( isset( $featured_skill)  && !empty( $featured_skill ) ) : ?>
+                <?php if ( isset( $featured_skill)  && !empty( $featured_skill ) ) : ?>
 
-					<h3><?php echo $featured_skill; ?></h3>
+                    <h3><?php echo $featured_skill; ?></h3>
 
-				<?php endif; ?>
+                <?php endif; ?>
 
-			</a><!-- .tile-content -->
+            </a><!-- .tile-content -->
 
-		</article><!-- #post-<?php the_ID(); ?> -->
+        </article><!-- #post-<?php the_ID(); ?> -->
 
-	<?php endwhile; ?>
+    <?php endwhile; ?>
 
 <?php else : ?>
 
-	<?php get_template_part( 'no-results', 'index' ); ?>
+    <?php get_template_part( 'no-results', 'index' ); ?>
 
 <?php endif; ?>

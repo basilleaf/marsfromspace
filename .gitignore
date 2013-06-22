@@ -4,3 +4,4 @@ secrets.py
 images
 .DS_Store
 published.txt
+*.bak

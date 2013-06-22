@@ -18,6 +18,11 @@ get_header(); ?>
 				global $post;
 
 				$description = get_post_meta( $post->ID, '_salmoncream_portfolio_description', true );
+
+				// lisa this is my hack 
+				if (!$description) {
+				$description = apply_filters('the_content', $post->post_content); 
+				}
 				$link = get_post_meta( $post->ID, '_salmoncream_portfolio_link', true );
 				$terms = wp_get_post_terms( $post->ID, 'skill' );
 				$media = get_post_meta( $post->ID, '_salmoncream_portfolio_media', true );
@@ -31,6 +36,7 @@ get_header(); ?>
 					</div>
 
 					<div class="entry-content">
+ 
 
 						<?php echo wpautop( $description ); ?>
 

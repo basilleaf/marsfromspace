@@ -771,6 +771,7 @@ a:focus {
   text-align: center;
 }
 .tile .tile-content {
+  transition-delay: .9s !important;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -878,6 +879,7 @@ a:focus {
 }
 .tile.portfolio:hover .tile-content {
   top: 0;
+  opacity:0.7;
 }
 /* =Infinite Loader
 ----------------------------------------------- */
@@ -1853,18 +1855,18 @@ select:focus:invalid:focus {
   background-size: 7px 10px;
   color: #fdfdfd;
   /**
-	 * Help: Arrow image not appearing
-	 * Try updating this property to your correct dk_arrows.png path
-	 */
+     * Help: Arrow image not appearing
+     * Try updating this property to your correct dk_arrows.png path
+     */
 
 }
 /* Applied when the dropdown is focused */
 /* Applied whenever the dropdown is open */
 .dk_open {
   /**
-	 * Help: Dropdown menu is covered by something
-	 * Try setting this value higher
-	 */
+     * Help: Dropdown menu is covered by something
+     * Try setting this value higher
+     */
 
   z-index: 10;
 }
@@ -1896,7 +1898,7 @@ select:focus:invalid:focus {
 .dk_touch .dk_options {
   max-height: 250px;
 }
-/******	End Theme ******/
+/****** End Theme ******/
 /***** Critical to the continued enjoyment of working dropdowns ******/
 .dk_container {
   position: relative;
@@ -2327,10 +2329,10 @@ input[type="submit"].btn.btn-mini {
   .tile.portfolio .tile-content h2 {
     font-size: 20px;
     /* 20px */
-  
+
     line-height: 24px !important;
     /* 24px */
-  
+
   }
   .tile.portfolio .tile-content h3 {
     font-size: 16px !important;
