@@ -102,6 +102,7 @@ def grab_content_from_page(detail_url):
     content = re.findall(r'<div class="caption-text">\s*(.*?)\s*<div class="social">', ' '.join((str(soup).splitlines())))[0]
     soup_content = BeautifulSoup(content)
     content = soup_content.prettify()
+    # links to other images at this site are reletive, this rewrites them..
     content = content.replace('\n', ' ')  \
                      .replace('href="images/', 'target = "_blank" href="http://hirise.lpl.arizona.edu/images/') \
                      .replace('href="E', 'target = "_blank" href="http://hirise.lpl.arizona.edu/E') \
