@@ -2,7 +2,7 @@
 
 jQuery(function($) {
 
-    var count = 1000;
+    var count = 1;
 	var total = INFSCR.max_num_pages;
 
 	function loadArticle(pageNumber) {
