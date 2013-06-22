@@ -1,0 +1,6 @@
+beautifulsoup4==4.2.1
+boto==2.9.6
+distribute==0.6.24
+python-wordpress-xmlrpc==2.2
+wsgiref==0.1.2
+xmlrpclib==1.0.1

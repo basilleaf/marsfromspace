@@ -1,0 +1,22 @@
+Salmon & Cream Premium Portfolio WordPress Theme
+
+
+CHANGELOG
+
+v1.0.1 - Jun 19, 2013
+- Improvements & Fixes for the Infinite Scroll Feature
+- Small CSS Fixes
+
+Modified files:
+- functions.php
+- taxonomy-skill.php
+- js/infinite-scroll.js
+- js/main.js
+- less/main.less
+- style.css
+- style-blue.css
+- style-gray.css
+
+
+v1.0 - Jun 3, 2013
+- Initial Release

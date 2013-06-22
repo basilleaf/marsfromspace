@@ -1,0 +1,249 @@
+/*
+ * Buttons
+ *
+ * @package Salmon & Cream WordPress Theme
+ */
+
+
+/* =Base Styles
+----------------------------------------------- */
+
+// Core
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.btn {
+	display: inline-block;
+	.ie7-inline-block();
+	padding: (@baseLineHeight / 2) (@baseLineHeight * 3);
+	margin-bottom: 0; // For input.btn
+	color: @textColor2;
+	font-size: @baseFontSize * 1.5;
+	font-weight: 800;
+	line-height: @baseLineHeight * 1.5;
+	text-transform: uppercase;
+	text-align: center;
+	vertical-align: top;
+	cursor: pointer;
+	background: @buttonBg;
+	border-radius: 0;
+	max-width: 100%;
+	word-wrap: normal;
+	border: 0;
+	*border: 0; // Remove the border to prevent IE7's black border on input:focus
+	.ie7-restore-left-whitespace(); // Give IE7 some love
+
+	// Hover/focus state
+	&:hover,
+	&:focus {
+		color: @textColor2;
+		background: darken(@buttonBg, 3%);
+		text-decoration: none;
+		.transition(background .1s linear);
+	}
+
+	// Focus state for keyboard and accessibility
+	&:focus {
+		.tab-focus();
+	}
+
+	// Active state
+	&.active,
+	&:active {
+		background: darken(@orange, 6%);
+	}
+
+	// Disabled state
+	&.disabled,
+	&[disabled] {
+		cursor: default;
+		.opacity(65);
+	}
+
+}
+
+.btn {
+	margin: 0 (@baseLineHeight / 2) @baseLineHeight 0;
+}
+
+
+/* =Buttons Sizes
+----------------------------------------------- */
+
+.btn {
+
+	&.large {
+		padding: (@baseLineHeight * 1.5) (@baseLineHeight * 3);
+		font-size: @baseFontSize * 2;
+	}
+
+	&.small {
+		padding: (@baseLineHeight / 2) (@baseLineHeight * 2);
+		font-size: @baseFontSize;
+	}
+}
+
+
+/* =Buttons Colors
+----------------------------------------------- */
+
+.btn {
+
+	&.orange {
+		background: @orange;
+
+		&:hover,
+		&:focus {
+			background: darken(@orange, 3%);
+		}
+
+		&.active,
+		&:active {
+			background: darken(@orange, 6%);
+		}
+	}
+
+	&.blue {
+		background: @blue;
+
+		&:hover,
+		&:focus {
+			background: darken(@blue, 3%);
+		}
+
+		&.active,
+		&:active {
+			background: darken(@blue, 6%);
+		}
+	}
+
+	&.yellow {
+		background: @yellow;
+
+		&:hover,
+		&:focus {
+			background: darken(@yellow, 3%);
+		}
+
+		&.active,
+		&:active {
+			background: darken(@yellow, 6%);
+		}
+	}
+
+	&.red {
+		background: @red;
+
+		&:hover,
+		&:focus {
+			background: darken(@red, 3%);
+		}
+
+		&.active,
+		&:active {
+			background: darken(@red, 6%);
+		}
+	}
+
+	&.cyan {
+		background: @cyan;
+
+		&:hover,
+		&:focus {
+			background: darken(@cyan, 3%);
+		}
+
+		&.active,
+		&:active {
+			background: darken(@cyan, 6%);
+		}
+	}
+
+	&.green {
+		background: @green;
+
+		&:hover,
+		&:focus {
+			background: darken(@green, 3%);
+		}
+
+		&.active,
+		&:active {
+			background: darken(@green, 6%);
+		}
+	}
+
+	&.pink {
+		background: @pink;
+
+		&:hover,
+		&:focus {
+			background: darken(@pink, 3%);
+		}
+
+		&.active,
+		&:active {
+			background: darken(@pink, 6%);
+		}
+	}
+
+	&.purple {
+		background: @purple;
+
+		&:hover,
+		&:focus {
+			background: darken(@purple, 3%);
+		}
+
+		&.active,
+		&:active {
+			background: darken(@purple, 6%);
+		}
+	}
+
+	&.gray {
+		background: @gray;
+
+		&:hover,
+		&:focus {
+			background: darken(@gray, 3%);
+		}
+
+		&.active,
+		&:active {
+			background: darken(@gray, 6%);
+		}
+	}
+}
+
+/* =Crossbrowser
+----------------------------------------------- */
+
+button.btn,
+input[type="submit"].btn {
+
+	// Firefox 3.6 only I believe
+	&::-moz-focus-inner {
+		padding: 0;
+		border: 0;
+	}
+
+	// IE7 has some default padding on button controls
+	*padding-top: 3px;
+	*padding-bottom: 3px;
+
+	&.btn-large {
+		*padding-top: 7px;
+		*padding-bottom: 7px;
+	}
+	&.btn-small {
+		*padding-top: 3px;
+		*padding-bottom: 3px;
+	}
+	&.btn-mini {
+		*padding-top: 1px;
+		*padding-bottom: 1px;
+	}
+}
+

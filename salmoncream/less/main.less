@@ -1,0 +1,1265 @@
+/*
+ * Main Style Sheet
+ *
+ * @package Salmon & Cream WordPress Theme
+ */
+
+/* =Header
+----------------------------------------------- */
+
+.site-header {
+	background: @headerBackground;
+	position: relative;
+
+	.site-title {
+		float: left;
+		margin: (@baseLineHeight * 2) 0 @baseLineHeight (@baseLineHeight * 3);
+		text-transform: none;
+		font-weight: normal;
+		font-size: @baseFontSize * 3;
+		font-family: @logoFontFamily;
+		line-height: @baseLineHeight * 1.8;
+
+		a {
+			color: @logoColor;
+
+			&:hover, &:focus {
+				text-decoration: none;
+			}
+
+			img {
+				display: block;
+				margin-top: -@baseLineHeight;
+			}
+		}
+	}
+}
+
+/* =Menu
+----------------------------------------------- */
+
+.navigation-main {
+	display: block;
+	float: right;
+	margin: @baseLineHeight (@baseLineHeight * 2) 0 0;
+
+	ul {
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+		background: @headerNavBg;
+		font-size: 0;
+
+		li {
+			display: inline-block;
+
+			a {
+				display: block;
+				color: @headerNavColor;
+				text-decoration: none;
+				font-weight: 300;
+				font-size: @baseFontSize * 2.25;
+				line-height: @baseLineHeight * 2;
+				padding: @baseLineHeight;
+			}
+
+			&:hover > a,
+			&.current_page_item > a,
+			&.current-menu-item > a,
+			&.current-menu-ancestor > a,
+			&.current_page_ancestor > a {
+				color: @headerNavColorHover;
+			}
+
+			ul {
+				position: absolute;
+				right: 0;
+				z-index: 99999;
+				opacity: 0;
+				visibility: hidden;
+				padding-right: @baseLineHeight * 3;
+				width: 100%;
+				background: @headerNavBg2;
+				text-align: right;
+
+				ul {
+					background: @headerNavBg3;
+
+					ul {
+						background: @headerNavBg4;
+					}
+				}
+			}
+
+			&:hover > ul {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+}
+
+.navigation-main-mobile {
+	display: none;
+	margin: @baseLineHeight 0 0;
+	float: none;
+
+	ul.menu {
+		display: none;
+	}
+
+	ul {
+		background: @headerNavBg2;
+		padding-right: 0 !important;
+		margin: 0;
+		list-style: none;
+
+		li {
+			display: block;
+
+			a {
+				display: block;
+				padding: @baseLineHeight;
+				color: @headerNavColor;
+				text-decoration: none;
+				font-weight: 300;
+				font-size: @baseFontSize * 1.5;
+				line-height: @baseLineHeight;
+			}
+
+			&:hover > a,
+			&.current_page_item > a,
+			&.current-menu-item > a,
+			&.current-menu-ancestor > a,
+			&.current_page_ancestor > a {
+				color: @headerNavColorHover;
+			}
+
+			ul	{
+				background: @headerNavBg3;
+				opacity: 1;
+				visibility: visible;
+
+				a {
+					margin-left: @baseLineHeight;
+				}
+
+				ul {
+					background: @headerNavBg4;
+
+					a {
+						margin-left: @baseLineHeight * 2;
+					}
+				}
+			}
+		}
+	}
+}
+
+.menu-toggle {
+	display: none;
+	cursor: pointer;
+	position: absolute;
+	right: @baseLineHeight;
+	top: @baseLineHeight * 1.4;
+	width: 30px;
+	height: 30px;
+	background: url('img/menu-toggle.png') no-repeat;
+	background-size: 100%;
+	margin: 0;
+
+	&.toggled-on {
+		background-position: 0 -30px;
+	}
+}
+
+/* =Content
+----------------------------------------------- */
+
+.tiles-grid {
+	padding: 0;
+}
+
+.content-left {
+	float: left;
+	padding: (@baseLineHeight * 2) (@baseLineHeight * 3);
+	width: 35%;
+
+	.entry-header {
+		margin-bottom: @baseLineHeight * 2;
+		padding: 0;
+	}
+
+	.entry-meta {
+
+		p {
+			color: @linkColor;
+		}
+	}
+}
+
+.content-right {
+	float: right;
+	width: 65%;
+
+	.entry-header,
+	.entry-content,
+	.entry-meta {
+		padding-right: @baseLineHeight * 3;
+	}
+}
+
+.content-full {
+	padding: 0 (@baseLineHeight * 3);
+}
+
+/* =Overall
+----------------------------------------------- */
+
+
+.entry-header {
+	padding: (@baseLineHeight * 2) 0;
+
+	.entry-title {
+		margin: 0;
+	}
+}
+
+
+/* =Single Blog Post
+----------------------------------------------- */
+
+.single {
+
+	.content-right {
+
+		.entry-header {
+			padding: (@baseLineHeight * 2) (@baseLineHeight * 3) (@baseLineHeight * 2) 0;
+
+			.entry-title {
+				float: left;
+				margin: 0;
+				width: 80%;
+				text-transform: uppercase;
+			}
+
+			.entry-date {
+				float: right;
+				margin: (@baseLineHeight / 2) 0;
+				width: 20%;
+				color: @postDateColor;
+				text-align: right;
+			}
+		}
+
+		.entry-content {
+			padding: 0 (@baseLineHeight * 3) (@baseLineHeight * 2) 0;
+		}
+
+		footer.entry-meta {
+			padding-right: @baseLineHeight * 3;
+			padding-bottom: (@baseLineHeight * 2);
+		}
+
+	}
+}
+
+/* =Archives
+----------------------------------------------- */
+
+.archive, .search-results {
+
+	.page-header {
+		padding: (@baseLineHeight * 2) (@baseLineHeight * 3) (@baseLineHeight * 2) 0;
+
+		.taxonomy-description {
+
+			p {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.post {
+		margin: 0 (@baseLineHeight * 3) (@baseLineHeight * 2) 0;
+	}
+
+	.featured-image {
+		float: left;
+		margin: 0 @baseLineHeight 0 0;
+		width: 300px;
+	}
+
+	.entry-header {
+		margin: 0 0 @baseLineHeight 0;
+		padding: 0 0 0 (300px + @baseLineHeight);
+	}
+
+	.entry-title {
+		margin-bottom: 0;
+		text-transform: uppercase;
+		font-size: @baseFontSize * 1.5;
+		line-height: @baseLineHeight;
+
+		a {
+			color: @textColor;
+		}
+	}
+
+	.entry-meta {
+		color: @postDateColor;
+	}
+
+	.entry-summary {
+		padding: 0 0 0 (300px + @baseLineHeight);
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
+/* =No Results
+----------------------------------------------- */
+
+.no-results, .not-found {
+
+	.entry-header {
+		padding: (@baseLineHeight * 2) (@baseLineHeight * 3) (@baseLineHeight * 2) 0;
+
+		.entry-title {
+			margin: 0;
+			text-transform: uppercase;
+		}
+	}
+
+	.entry-content {
+		padding: 0 (@baseLineHeight * 3) (@baseLineHeight * 2) 0;
+	}
+
+	#searchsubmit {
+		padding: (@baseLineHeight / 4) (@baseLineHeight * 1);
+	}
+}
+
+.tiles-grid {
+
+	.no-results {
+		padding: 0 (@baseLineHeight * 3) ;
+	}
+}
+
+/* =Author Area
+----------------------------------------------- */
+
+.author-area {
+	padding: (@baseLineHeight * 2) (@baseLineHeight * 3);
+	background: @authorBg;
+	color: @textColor2;
+
+	h4 {
+		margin-bottom: @baseLineHeight;
+		font-weight: 300;
+		font-size: @baseFontSize * 1.5;
+
+		a {
+			color: @textColor2;
+		}
+	}
+
+	.author-meta {
+		padding-left: 120px + @baseLineHeight;
+		width: 75%;
+		font-weight: 400;
+
+		h5 {
+			font-size: @baseFontSize * 1.5;
+
+			a {
+				color: @textColor2;
+			}
+		}
+	}
+
+	img {
+		float: left;
+		width: 120px;
+	}
+}
+
+/* =Comments
+----------------------------------------------- */
+
+.comments-area {
+	background: @commentsBg;
+}
+
+.comments-header {
+	position: relative;
+	padding: @baseLineHeight * 3;
+	background: @bodyBackground;
+
+	h2 {
+		margin: 0;
+		text-transform: uppercase;
+		font-size: @baseFontSize * 1.5;
+		line-height: @baseLineHeight;
+	}
+
+	.toggle-comments {
+		position: absolute;
+		top: @baseLineHeight * 3;
+		right: @baseLineHeight * 3;
+		display: block;
+		width: 25px;
+		height: 25px;
+		background: @headerNavBg url("img/comments-toggle.png") no-repeat;
+		background-size: 100%;
+
+		&.comments-hidden {
+			background-position: 0 -25px;
+		}
+	}
+}
+
+.comment-list {
+	margin: 0;
+	padding: @baseLineHeight * 3;
+	color: @textColor2;
+	list-style: none;
+
+	.comment {
+		margin-bottom: @baseLineHeight;
+	}
+
+	.comment-box {
+		margin-left: 120px + @baseLineHeight;
+		padding: @baseLineHeight;
+		background: @commentBoxBG;
+
+		.comment-author-vcard {
+			font-size: @baseFontSize * 1.5;
+
+			a {
+				color: @textColor2;
+			}
+		}
+
+		.comment-meta {
+			color: @commentMetaColor;
+			font-weight: 400;
+			margin-bottom: @baseLineHeight;
+
+			.comment-reply-link {
+				color: @commentMetaColor;
+				font-weight: 600;
+			}
+
+			.comment-edit-link {
+				margin-left: @baseFontSize;
+				padding: 2px 4px;
+				background: @commentsBg;
+				color: @textColor2;
+			}
+		}
+
+		.comment-content {
+			font-weight: 400;
+
+			a {
+				word-wrap: break-word;
+			}
+		}
+	}
+
+
+	.comment-author-avatar {
+		float: left;
+		width: 120px;
+		margin: 0;
+	}
+
+	ul.children {
+		margin-left: 120px + @baseLineHeight;
+
+		.comment { list-style: none;
+
+			.comment-box {
+				background: @commentBoxBG;
+			}
+		}
+
+		ul.children {
+			//margin-left: 0;
+		}
+
+	}
+
+	.bypostauthor,
+	.byadmin,
+	ul.children .bypostauthor,
+	ul.children .byadmin {
+
+		.comment-box {
+			background: @commentAuthorBoxBG;
+		}
+	}
+
+}
+
+.navigation-comment {
+	background: @bodyBackground;
+}
+
+
+/* =Comment Form & Contact Form
+----------------------------------------------- */
+
+.comment #respond {
+	padding: @baseLineHeight * 3;
+}
+
+#respond {
+	padding: @baseLineHeight * 3;
+	padding-bottom: 0;
+}
+
+#respond,
+.comment #respond,
+#contactform {
+	background: @bodyBackground;
+	color: @textColor;
+
+	.reply-title {
+		text-transform: uppercase;
+		font-size: @baseFontSize *1.5;
+		line-height: @baseLineHeight;
+	}
+
+	p, .field {
+		.clearfix();
+		margin-bottom: @baseLineHeight;
+	}
+
+	input, textarea {
+		float: left;
+		margin-bottom: 0;
+	}
+
+	label {
+		display: inline;
+		margin-left: @baseLineHeight;
+		font-weight: 600;
+		font-size: @baseFontSize * 1.5;
+		line-height: @baseLineHeight * 2;
+	}
+
+	.form-allowed-tags {
+		display: none;
+	}
+
+	.comment-form-comment label {
+		display: none;
+	}
+
+}
+
+#contactform {
+	margin-top: @baseLineHeight * 5;
+
+	#cc {
+		margin: 17px 0 0;
+	}
+
+	.alert {
+		float: none;
+		clear: both;
+
+	}
+
+	.alert.yellow {
+		position: relative;
+		top: @baseLineHeight;
+	}
+}
+
+
+/* =Tiles
+----------------------------------------------- */
+
+.tile {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	margin: 0;
+	width: 25%;
+	text-align: center;
+
+	.tile-content {
+		.transition(all .3s);
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		color: @textColor2;
+		text-transform: uppercase;
+
+		a {
+			color: @textColor2;
+		}
+	}
+
+	&:nth-child(5n+1) .tile-content {
+		background: @tileBg1;
+	}
+
+	&:nth-child(5n+2) .tile-content {
+		background: @tileBg2;
+	}
+
+	&:nth-child(5n+3) .tile-content {
+		background: @tileBg3;
+	}
+
+	&:nth-child(5n+4) .tile-content {
+		background: @tileBg4;
+	}
+
+	&:nth-child(5n+5) .tile-content {
+		background: @tileBg5;
+	}
+}
+
+/* =Blog Tiles
+----------------------------------------------- */
+
+.tile {
+
+	&.post {
+		text-align: left;
+
+		.entry-header {
+			margin: 0 0 (@baseLineHeight * 3) 0; /* 0 0 48px 0 */
+			padding: 0;
+			height: @baseLineHeight * 2; /* 48px */
+		}
+
+		.entry-title {
+			overflow: hidden;
+			height: @baseLineHeight * 2; /* 48px */
+			font-size: @baseFontSize * 1.25; /* 20px */
+			line-height: @baseLineHeight; /* 24px */
+		}
+
+		.tile-content {
+			top: 100%;
+			padding: @baseLineHeight;
+			margin-top: -96px;
+
+			&.no-thumbnail {
+				top: 0;
+				margin-top: 0;
+			}
+		}
+
+		&:hover .tile-content {
+			top: 0;
+			margin-top: 0;
+		}
+
+		a:hover {
+			text-decoration: none;
+		}
+
+	}
+}
+
+
+/* =Portfolio Tiles
+----------------------------------------------- */
+
+.tile {
+
+	&.portfolio {
+
+		.tile-content {
+			.transition(top .3s);
+			top: 100%;
+			display: block;
+
+
+			&.no-thumbnail {
+				top: 0;
+			}
+
+			h2 {
+				position: absolute;
+				top: 30%;
+				width: 100%;
+				font-size: @baseFontSize * 2.25;
+				line-height: @baseLineHeight * 1.5;
+				padding: 0 @baseLineHeight;
+			}
+
+			h3 {
+				position: absolute;
+				bottom: 20%;
+				margin: 0;
+				width: 100%;
+				font-size: @baseFontSize * 1.5;
+				line-height: @baseLineHeight;
+				color: fade(@textColor2, 70%);
+				padding: 0 @baseLineHeight;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		&:hover .tile-content {
+			top: 0;
+		}
+	}
+}
+
+/* =Infinite Loader
+----------------------------------------------- */
+
+#infinite-loader {
+	display:none;
+	float: none;
+	clear: both;
+	margin: @baseLineHeight * 2 auto;
+	background: url('img/loader.gif') no-repeat;
+	background-size: 64px 64px;
+	width: 64px;
+	height: 64px;
+}
+
+
+/* =Sticky Posts
+----------------------------------------------- */
+
+.sticky-post-image {
+	float: left;
+	margin: 0;
+	padding: @baseLineHeight * 3;
+	width: 50%;
+}
+
+.sticky-post-content {
+	float: right;
+	padding: (@baseLineHeight * 3) (@baseLineHeight * 3) (@baseLineHeight * 3) 0;
+	width: 50%;
+
+	.entry-header {
+		padding: 0;
+		margin-bottom: @baseLineHeight;
+	}
+
+	.entry-title {
+		text-transform: uppercase;
+		line-height: @baseLineHeight * 1.5;
+
+		a {
+			color: @linkColor;
+		}
+	}
+
+	.entry-summary {
+		font-size: @baseFontSize * 1.5;
+		line-height: @baseLineHeight * 1.5;
+	}
+}
+
+/* =Flexslider
+----------------------------------------------- */
+
+/* Browser Resets */
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus {
+    outline: none;
+}
+
+.slides,
+.flex-control-nav,
+.flex-direction-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* FlexSlider Necessary Styles
+*********************************/
+.flexslider {
+    margin: 0;
+    padding: 0;
+}
+
+.flexslider .slides > li {
+    position: relative;
+    display: none;
+    -webkit-backface-visibility: hidden;
+} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {
+    display: block;
+    width: 100%;
+}
+
+.flex-pauseplay span {
+    text-transform: capitalize;
+}
+
+/* Clearfix for the .slides element */
+.slides:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: ".";
+    line-height: 0;
+}
+
+html[xmlns] .slides {
+    display: block;
+}
+
+* html .slides {
+    height: 1%;
+}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {
+    display: block;
+}
+
+/* FlexSlider Default Theme
+*********************************/
+.flexslider {
+    position: relative;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.flex-viewport {
+    max-height: 2000px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.loading .flex-viewport {
+    max-height: 300px;
+}
+
+.flexslider .slides {
+    zoom: 1;
+}
+
+.carousel li {
+    margin-right: 5px;
+}
+
+/* Direction Nav */
+.flex-direction-nav {
+    *height: 0;
+}
+
+.flex-direction-nav a {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    display: block;
+    width: @baseLineHeight * 3;
+    height: 100%;
+    text-indent: -9999px;
+    opacity: 0;
+    cursor: pointer;
+    -webkit-transition: all .3s ease;
+}
+
+.flex-direction-nav .flex-next {
+    right: -(@baseLineHeight * 2);
+    background: url('img/arrow-next.png') no-repeat center center;
+    background-size: 20px 30px;
+}
+
+.flex-direction-nav .flex-prev {
+    left: -(@baseLineHeight * 2);
+    background: url('img/arrow-prev.png') no-repeat center center;
+    background-size: 20px 30px;
+}
+
+.flexslider:hover .flex-next {
+    right: 0;
+    opacity: 0.8;
+}
+
+.flexslider:hover .flex-prev {
+    left: 0;
+    opacity: 0.8;
+}
+
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {
+    opacity: 1;
+}
+
+.flex-direction-nav .flex-disabled {
+    opacity: .3!important;
+    filter: alpha(opacity=30);
+    cursor: default;
+}
+
+/* Control Nav */
+.flex-control-nav {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    text-align: center;
+}
+
+.flex-control-nav li {
+    display: inline-block;
+    margin: 0 6px;
+    zoom: 1;
+    *display: inline;
+}
+
+.flex-control-paging li a {
+    display: block;
+    width: 11px;
+    height: 11px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    background: #666;
+    background: rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+    text-indent: -9999px;
+    cursor: pointer;
+    -o-border-radius: 20px;
+}
+
+.flex-control-paging li a:hover {
+    background: #333;
+    background: rgba(0,0,0,0.7);
+}
+
+.flex-control-paging li a.flex-active {
+    background: #000;
+    background: rgba(0,0,0,0.9);
+    cursor: default;
+}
+
+.flex-control-thumbs {
+    position: static;
+    overflow: hidden;
+    margin: 5px 0 0;
+}
+
+.flex-control-thumbs li {
+    float: left;
+    margin: 0;
+    width: 25%;
+}
+
+.flex-control-thumbs img {
+    display: block;
+    width: 100%;
+    opacity: .7;
+    cursor: pointer;
+}
+
+.flex-control-thumbs img:hover {
+    opacity: 1;
+}
+
+.flex-control-thumbs .flex-active {
+    opacity: 1;
+    cursor: default;
+}
+
+
+/* =Media
+----------------------------------------------- */
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+.aligncenter {
+	display: block;
+	clear: both;
+	margin: 0 auto;
+}
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	position: absolute !important;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+.wp-post-image {
+	width: 100%;
+}
+
+.entry-content img.wp-smiley,
+.comment-content img.wp-smiley {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 0;
+	border: none;
+}
+.wp-caption {
+	margin-bottom: @baseLineHeight;
+	max-width: 100%;
+}
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin: 0;
+	width: 100%;
+	height: auto;
+}
+.wp-caption-text {
+	margin-bottom: 0;
+	padding: @baseLineHeight / 2;
+	background: @imgCaptionBg;
+	color: @textColor2;
+	text-align: center;
+}
+
+.site-content .gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-caption {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.site-content .gallery a img {
+	max-width: 90%;
+	height: auto;
+	border: none;
+}
+.site-content .gallery dd {
+	margin: 0;
+}
+
+/* Make sure embeds and iframes fit their containers */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+
+/* =Navigation
+----------------------------------------------- */
+
+.site-main [class*="navigation"] {
+	clear: both;
+	overflow: hidden;
+	text-align: center;
+
+	.nav-previous,
+	.nav-next {
+		margin-top: @baseLineHeight;
+
+		.btn {
+			display: block;
+			margin: 0;
+			padding: @baseLineHeight (@baseLineHeight * 3);
+			white-space: nowrap;
+		}
+	}
+}
+
+[class*="navigation"] {
+
+	.nav-previous {
+		float: left;
+		width: 25%;
+	}
+
+	.nav-next {
+		float: right;
+		width: 25%;
+	}
+}
+
+.navigation-comment,
+.navigation-paging {
+
+	.nav-previous {
+		width: auto;
+	}
+
+	.nav-next {
+		width: auto;
+	}
+}
+
+/* =Widgets
+----------------------------------------------- */
+
+
+.widget-area {
+
+	.widget-title {
+		font-size: @baseFontSize * 1.5;
+		line-height: @baseLineHeight * 1.5;
+	}
+}
+
+.widget {
+	.clearfix();
+	margin: 0 0 1.5em;
+}
+
+/* Make sure select elements fit in widgets */
+.widget select {
+	max-width: 100%;
+}
+
+/* Search widget */
+.widget_search {
+
+	input {
+
+	}
+
+	.submit {
+		display: none;
+	}
+}
+
+.widget_calendar {
+
+	table {
+		border: 0;
+	}
+
+	td {
+		position: relative;
+		padding: 4px 7px;
+		border: 2px solid @bodyBackground;
+		text-align: center;
+		line-height: @baseLineHeight;
+
+
+		a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			padding: 4px 7px;
+			background: @calenderLinkBg;
+			color: @textColor2;
+		}
+	}
+
+	th {
+		padding: 4px 7px;
+		border: 0;
+		text-align: center;
+		line-height: @baseLineHeight;
+	}
+
+	th {
+		border-right: none;
+	}
+
+	thead {
+		background: @calenderHeaderBg;
+		color: @textColor2;
+	}
+
+	tbody {
+		background: @calenderBodyBg;
+		color: @textColor2;
+
+		td {
+			width: 32px;
+			height: 32px;
+
+			a {
+				width: 32px;
+				height: 32px;
+			}
+		}
+	}
+
+	td.pad {
+		background: @bodyBackground;
+	}
+}
+
+/* =Footer
+----------------------------------------------- */
+
+.site-footer {
+	padding: (@baseLineHeight * 4) (@baseLineHeight * 3);
+}
+
+.site-info {
+	float: left;
+	margin: (@baseLineHeight * 2) 0;
+	font-weight: 600;
+	width: 45%;
+	margin-right: 5%;
+
+	p {
+		margin-bottom: 0;
+	}
+}
+
+.navigation-footer {
+	float: right;
+	margin: (@baseLineHeight * 2) 0;
+	width: 45%;
+	margin-left: 5%;
+	text-align: right;
+
+	.menu {
+		float: right;
+	}
+
+	ul {
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+		font-size: 0;
+
+		li {
+			position: relative;
+			display: inline-block;
+			margin-left: @baseFontSize;
+
+			a {
+				color: @footerNavColor;
+				font-weight: 600;
+				font-size: @baseFontSize;
+			}
+
+			&:hover > a,
+			&.current_page_item > a,
+			&.current-menu-item > a {
+				color: @footerNavColorHover;
+				text-decoration: none;
+			}
+		}
+	}
+}

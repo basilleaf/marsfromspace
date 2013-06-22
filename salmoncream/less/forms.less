@@ -1,0 +1,413 @@
+/*
+ * Forms
+ *
+ * @package Salmon & Cream WordPress Theme
+ */
+
+
+/* =General Styles
+----------------------------------------------- */
+
+// Make all forms have space below them
+form {
+	margin: 0 0 @baseLineHeight;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+// Groups of fields with labels on top (legends)
+legend {
+	display: block;
+	margin-bottom: @baseLineHeight;
+	padding: 0;
+	width: 100%;
+	border: 0;
+	border-bottom: 1px solid #e5e5e5;
+	color: @grayDark;
+	font-size: @baseFontSize * 1.5;
+	line-height: @baseLineHeight * 2;
+
+	// Small
+	small {
+		color: @grayLight;
+		font-size: @baseLineHeight * .75;
+	}
+}
+
+// Set font for forms
+label,
+input,
+button,
+select,
+textarea {
+	#font > .shorthand(@baseFontSize,normal,@baseLineHeight); // Set size, weight, line-height here
+}
+input,
+button,
+select,
+textarea {
+	font-family: @baseFontFamily; // And only set font-family here for those that need it (note the missing label element)
+}
+
+// Identify controls by their labels
+label {
+	display: block;
+}
+
+/* =Form controls
+----------------------------------------------- */
+
+// Shared size and type resets
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	display: inline-block;
+	margin-bottom: @baseLineHeight / 2;
+	padding: 0 @baseLineHeight;
+	height: @baseLineHeight * 2;
+	color: @grayLighter;
+	vertical-align: middle;
+	font-size: @baseFontSize * 1.5;
+	line-height: @baseLineHeight;
+	max-width: 100%;
+	border-radius: 0;
+}
+
+textarea {
+	padding: @baseLineHeight;
+}
+
+// Reset appearance properties for textual inputs and textarea
+// Declare width for legacy (can't be on input[type=*] selectors or it's too specific)
+input,
+textarea,
+.uneditable-input {
+	/* width: 206px; */// plus 12px padding and 2px border;
+}
+// Reset height since textareas have rows
+textarea {
+	height: auto;
+}
+// Everything else
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+		border: 0;
+		background: @inputBg;
+
+	// Focus state
+	&:focus {
+		outline: 0;
+		outline: thin dotted \9; /* IE6-9 */
+	}
+}
+
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
+	margin: 4px 0 0;
+	margin-top: 1px \9; /* IE8-9 */
+	line-height: normal;
+	*margin-top: 0; /* IE7 */
+}
+
+// Reset width of input images, buttons, radios, checkboxes
+input[type="file"],
+input[type="image"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+	width: auto; // Override of generic input selector
+}
+
+// Set the height of select and file controls to match text inputs
+select,
+input[type="file"] {
+	height: @inputHeight; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+	line-height: @inputHeight;
+	*margin-top: 4px; /* For IE7, add top margin to align select with labels */
+}
+
+// Make select elements obey height by applying a border
+select {
+	width: 220px; // default input width + 10px of padding that doesn't get applied
+	background-color: @inputBg; // Chrome on Linux and Mobile Safari need background-color
+}
+
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] {
+	height: auto;
+}
+
+// Focus for select, file, radio, and checkbox
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+	.tab-focus();
+}
+
+
+/* =Placeholder
+----------------------------------------------- */
+
+// Placeholder text gets special styles because when browsers invalidate entire lines if it doesn't understand a selector
+input,
+textarea {
+	.placeholder();
+}
+
+
+/* =Checkboxes and Radio
+----------------------------------------------- */
+
+// Indent the labels to position radios/checkboxes as hanging
+.radio,
+.checkbox { // clear the floating input if there is no label text
+	padding-left: 20px;
+	min-height: @baseLineHeight;
+}
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+	float: left;
+	margin-left: -20px;
+}
+
+// Move the options list down to align with labels
+.controls > .radio:first-child,
+.controls > .checkbox:first-child {
+	padding-top: 5px; // has to be padding because margin collaspes
+}
+
+// Radios and checkboxes on same line
+// TODO v3: Convert .inline to .control-inline
+.radio.inline,
+.checkbox.inline {
+	display: inline-block;
+	margin-bottom: 0;
+	padding-top: 5px;
+	vertical-align: middle;
+}
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline {
+	margin-left: 10px; // space out consecutive inline controls
+}
+
+/* =Disabled State
+----------------------------------------------- */
+
+// Disabled and read-only inputs
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+	background-color: @gray;
+	cursor: not-allowed;
+}
+// Explicitly reset the colors here
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+	background-color: transparent;
+}
+
+// HTML5 invalid states
+// Shares styles with the .control-group.error above
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+	border-color: #ee5f5b;
+	color: #b94a48;
+	&:focus {
+		@shadow: 0 0 6px lighten(#ee5f5b, 20%);
+		.box-shadow(@shadow);
+		border-color: darken(#ee5f5b, 10%);
+	}
+}
+
+
+/* =Dropdowns powered by dropkick.js
+----------------------------------------------- */
+
+.dk_container {
+	background: @inputBg;
+	font-weight: bold;
+	font-size: @baseFontSize;
+	line-height: @baseLineHeight;
+}
+	.dk_container:focus {
+		outline: 0;
+	}
+	.dk_container a {
+		color: @grayLighter;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+/* Opens the dropdown and holds the menu label */
+.dk_toggle {
+	padding: (@baseLineHeight / 2) @baseLineHeight;
+	background: url('img/dk_arrows_white.png') no-repeat 90% center;
+	background-size: 7px 10px;
+	color: @textColor2;
+	/**
+	 * Help: Arrow image not appearing
+	 * Try updating this property to your correct dk_arrows.png path
+	 */
+}
+	.dk_toggle:hover {
+
+	}
+	/* Applied when the dropdown is focused */
+	.dk_focus .dk_toggle {
+
+	}
+	.dk_focus .dk_toggle {
+
+	}
+
+/* Applied whenever the dropdown is open */
+.dk_open {
+
+	/**
+	 * Help: Dropdown menu is covered by something
+	 * Try setting this value higher
+	 */
+	z-index: 10;
+}
+	.dk_open .dk_toggle {
+		color: @textColor2;
+	}
+
+/* The outer container of the options */
+.dk_options {
+
+}
+	.dk_options a {
+		padding: (@baseLineHeight / 2) @baseLineHeight;
+		background: @headerNavBg2;
+		font-weight: bold;
+	}
+	.dk_options li:last-child a {
+		border-bottom: none;
+	}
+	.dk_options a:hover,
+	.dk_option_current a {
+		background: @headerNavBg3;
+		color: @textColor2;
+		text-decoration: none;
+	}
+
+/* Inner container for options, this is what makes the scrollbar possible. */
+.dk_options_inner {
+	max-height: 250px;
+	color: @textColor2;
+}
+
+/* Set a max-height on the options inner */
+.dk_options_inner,
+.dk_touch .dk_options {
+	max-height: 250px;
+}
+
+/******	End Theme ******/
+
+/***** Critical to the continued enjoyment of working dropdowns ******/
+
+.dk_container {
+	position: relative;
+	display: none;
+	float: left;
+}
+	.dk_container a {
+		outline: 0;
+	}
+
+.dk_toggle {
+	position: relative;
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+}
+
+.dk_open {
+	position: relative;
+}
+	.dk_open .dk_options {
+		display: block;
+	}
+	.dk_open .dk_label {
+		color: inherit;
+	}
+
+.dk_options {
+	position: absolute;
+	right: 0;
+	display: none;
+	width: 100%;
+}
+	.dk_options a,
+	.dk_options a:link,
+	.dk_options a:visited {
+		display: block;
+	}
+	.dk_options_inner {
+		position: relative;
+		overflow: auto;
+		margin: 0;
+	}
+
+.dk_touch .dk_options {
+	overflow: hidden;
+}
+
+.dk_touch .dk_options_inner {
+	overflow: visible;
+	max-height: none;
+}
+
+.dk_fouc select {
+	position: relative;
+	top: -99999em;
+	visibility: hidden;
+}
+
+/***** End Critical to the continued enjoyment of working dropdowns ******/

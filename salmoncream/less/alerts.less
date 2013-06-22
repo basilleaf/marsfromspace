@@ -1,0 +1,27 @@
+/*
+ * Alerts
+ *
+ * @package Salmon & Cream WordPress Theme
+ */
+
+.alert {
+	padding: @baseLineHeight;
+	margin-bottom: @baseLineHeight;
+	background: lighten(@alertBg, 30%);
+	color: darken(@alertBg, 3%);
+
+	&.red, &.error {
+	background: lighten(@alertErrorBg, 10%);
+	color: darken(@alertErrorBg, 20%);
+	}
+
+	&.yellow, &.warning {
+	background: lighten(@alertWarningBg, 10%);
+	color: darken(@alertWarningBg, 25%);
+	}
+
+	&.green, &.success {
+	background: darken(@alertSuccessBg, 3%);
+	color: darken(@alertSuccessBg, 20%);
+	}
+}

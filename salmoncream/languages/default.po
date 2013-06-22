@@ -1,0 +1,873 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Salmon &amp; Cream Wordpress Theme v1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-05-25 14:04:05+0000\n"
+"Last-Translator: admin <felix.webgeheuer@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: 404.php:16
+#@ salmoncream
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:20
+#@ salmoncream
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr ""
+
+#: 404.php:35
+#@ salmoncream
+msgid "Most Used Categories"
+msgstr ""
+
+#: archive.php:20
+#, php-format
+#@ salmoncream
+msgid "Category Archives: %s"
+msgstr ""
+
+#: archive.php:23
+#, php-format
+#@ salmoncream
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: archive.php:30
+#, php-format
+#@ salmoncream
+msgid "Author Archives: %s"
+msgstr ""
+
+#: archive.php:38
+#, php-format
+#@ salmoncream
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: archive.php:41
+#, php-format
+#@ salmoncream
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: archive.php:44
+#, php-format
+#@ salmoncream
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: archive.php:47
+#: sidebar.php:17
+#@ salmoncream
+msgid "Archives"
+msgstr ""
+
+#: comments.php:48
+#@ salmoncream
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:49
+#@ salmoncream
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:50
+#@ salmoncream
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:62
+#@ salmoncream
+msgid "Comments are closed."
+msgstr ""
+
+#: content-blog-stickies.php:41
+#: content-blog-tiles.php:46
+#@ salmoncream
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: content-page.php:18
+#: content-single.php:35
+#@ salmoncream
+msgid "Pages:"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: content-single.php:44
+#: content-single.php:47
+#@ salmoncream
+msgid ", "
+msgstr ""
+
+#: content-single.php:52
+#, php-format
+#@ salmoncream
+msgid "<p>This entry was tagged %2$s.</p>"
+msgstr ""
+
+#: content-single.php:60
+#, php-format
+#@ salmoncream
+msgid "This entry was posted in %1$s and tagged %2$s."
+msgstr ""
+
+#: content-single.php:62
+#, php-format
+#@ salmoncream
+msgid "This entry was posted in %1$s."
+msgstr ""
+
+#: content.php:47
+#, php-format
+#@ salmoncream
+msgctxt "comments title"
+msgid "1 Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: footer.php:27
+#@ salmoncream
+msgid "A Semantic Personal Publishing Platform"
+msgstr ""
+
+#: footer.php:27
+#, php-format
+#@ salmoncream
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: footer.php:29
+#, php-format
+#@ salmoncream
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: functions.php:93
+#@ salmoncream
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:94
+#@ salmoncream
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:106
+#@ salmoncream
+msgid "Blog Sidebar"
+msgstr ""
+
+#: functions.php:114
+#@ salmoncream
+msgid "Page Sidebar"
+msgstr ""
+
+#: header.php:36
+#@ salmoncream
+msgid "Skip to content"
+msgstr ""
+
+#: inc/Custom-Meta-Boxes/classes.fields.php:455
+#@ default
+msgid "Allowed Image Files"
+msgstr ""
+
+#: inc/Custom-Meta-Boxes/custom-meta-boxes.php:220
+#@ default
+msgid "id"
+msgstr ""
+
+#: inc/extras.php:38
+#, php-format
+#@ salmoncream
+msgid "Page %s"
+msgstr ""
+
+#: inc/options-framework/options-framework.php:155
+#: inc/options-framework/options-framework.php:370
+#@ options_framework_theme
+msgid "Theme Options"
+msgstr ""
+
+#: inc/options-framework/options-framework.php:186
+#@ options_framework_theme
+msgid "Clear"
+msgstr ""
+
+#: inc/options-framework/options-framework.php:187
+#: inc/theme-options.php:49
+#@ options_framework_theme
+#@ salmoncream
+msgid "Default"
+msgstr ""
+
+#: inc/options-framework/options-framework.php:188
+#@ options_framework_theme
+msgid "Select Color"
+msgstr ""
+
+#: inc/options-framework/options-framework.php:233
+#@ options_framework_theme
+msgid "Save Options"
+msgstr ""
+
+#: inc/options-framework/options-framework.php:234
+#@ options_framework_theme
+msgid "Restore Defaults"
+msgstr ""
+
+#: inc/options-framework/options-framework.php:234
+#@ options_framework_theme
+msgid "Click OK to reset. Any theme settings will be lost!"
+msgstr ""
+
+#: inc/options-framework/options-framework.php:266
+#@ options_framework_theme
+msgid "Default options restored."
+msgstr ""
+
+#: inc/options-framework/options-framework.php:320
+#@ options_framework_theme
+msgid "Options saved."
+msgstr ""
+
+#: inc/options-framework/options-media-uploader.php:51
+#@ options_framework_theme
+msgid "No file chosen"
+msgstr ""
+
+#: inc/options-framework/options-media-uploader.php:54
+#: inc/options-framework/options-media-uploader.php:107
+#@ options_framework_theme
+msgid "Upload"
+msgstr ""
+
+#: inc/options-framework/options-media-uploader.php:56
+#: inc/options-framework/options-media-uploader.php:108
+#@ options_framework_theme
+msgid "Remove"
+msgstr ""
+
+#: inc/options-framework/options-media-uploader.php:59
+#@ options_framework_theme
+msgid "Upgrade your version of WordPress for full media support."
+msgstr ""
+
+#: inc/options-framework/options-media-uploader.php:83
+#@ options_framework_theme
+msgid "View File"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:232
+#@ options_framework_theme
+msgid "No Repeat"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:233
+#@ options_framework_theme
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:234
+#@ options_framework_theme
+msgid "Repeat Vertically"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:235
+#@ options_framework_theme
+msgid "Repeat All"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:248
+#@ options_framework_theme
+msgid "Top Left"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:249
+#@ options_framework_theme
+msgid "Top Center"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:250
+#@ options_framework_theme
+msgid "Top Right"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:251
+#@ options_framework_theme
+msgid "Middle Left"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:252
+#@ options_framework_theme
+msgid "Middle Center"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:253
+#@ options_framework_theme
+msgid "Middle Right"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:254
+#@ options_framework_theme
+msgid "Bottom Left"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:255
+#@ options_framework_theme
+msgid "Bottom Center"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:256
+#@ options_framework_theme
+msgid "Bottom Right"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:269
+#@ options_framework_theme
+msgid "Scroll Normally"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:270
+#@ options_framework_theme
+msgid "Fixed in Place"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:344
+#@ options_framework_theme
+msgid "Normal"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:345
+#@ options_framework_theme
+msgid "Italic"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:346
+#@ options_framework_theme
+msgid "Bold"
+msgstr ""
+
+#: inc/options-framework/options-sanitize.php:347
+#@ options_framework_theme
+msgid "Bold Italic"
+msgstr ""
+
+#: inc/portfolio-post-type.php:17
+#: inc/theme-options.php:37
+#@ salmoncream
+msgid "Portfolio"
+msgstr ""
+
+#: inc/portfolio-post-type.php:18
+#@ salmoncream
+msgid "Item"
+msgstr ""
+
+#: inc/portfolio-post-type.php:19
+#@ salmoncream
+msgid "All Items"
+msgstr ""
+
+#: inc/portfolio-post-type.php:20
+#@ salmoncream
+msgid "Add New"
+msgstr ""
+
+#: inc/portfolio-post-type.php:21
+#@ salmoncream
+msgid "Add New Item"
+msgstr ""
+
+#: inc/portfolio-post-type.php:22
+#: inc/template-tags.php:71
+#: inc/template-tags.php:110
+#@ salmoncream
+msgid "Edit"
+msgstr ""
+
+#: inc/portfolio-post-type.php:23
+#@ salmoncream
+msgid "Edit Item"
+msgstr ""
+
+#: inc/portfolio-post-type.php:24
+#@ salmoncream
+msgid "New Item"
+msgstr ""
+
+#: inc/portfolio-post-type.php:25
+#@ salmoncream
+msgid "View Item"
+msgstr ""
+
+#: inc/portfolio-post-type.php:26
+#@ salmoncream
+msgid "Search Items"
+msgstr ""
+
+#: inc/portfolio-post-type.php:27
+#@ salmoncream
+msgid "Nothing found in the Database."
+msgstr ""
+
+#: inc/portfolio-post-type.php:28
+#@ salmoncream
+msgid "Nothing found in Trash"
+msgstr ""
+
+#: inc/portfolio-post-type.php:61
+#: single-portfolio.php:51
+#@ salmoncream
+msgid "Skills"
+msgstr ""
+
+#: inc/portfolio-post-type.php:62
+#@ salmoncream
+msgid "Skill"
+msgstr ""
+
+#: inc/portfolio-post-type.php:63
+#@ salmoncream
+msgid "Search Skills"
+msgstr ""
+
+#: inc/portfolio-post-type.php:64
+#@ salmoncream
+msgid "All Skills"
+msgstr ""
+
+#: inc/portfolio-post-type.php:65
+#@ salmoncream
+msgid "Parent Skill"
+msgstr ""
+
+#: inc/portfolio-post-type.php:66
+#@ salmoncream
+msgid "Parent Skill:"
+msgstr ""
+
+#: inc/portfolio-post-type.php:67
+#@ salmoncream
+msgid "Edit Skill"
+msgstr ""
+
+#: inc/portfolio-post-type.php:68
+#@ salmoncream
+msgid "Update Skill"
+msgstr ""
+
+#: inc/portfolio-post-type.php:69
+#@ salmoncream
+msgid "Add Skill"
+msgstr ""
+
+#: inc/portfolio-post-type.php:70
+#@ salmoncream
+msgid "New Skill"
+msgstr ""
+
+#: inc/portfolio-post-type.php:89
+#@ salmoncream
+msgid "Portfolio Item Details"
+msgstr ""
+
+#: inc/portfolio-post-type.php:95
+#@ salmoncream
+msgid "Featured Skill"
+msgstr ""
+
+#: inc/portfolio-post-type.php:97
+#@ salmoncream
+msgid "This will be displayed on the portfolio page below the project title."
+msgstr ""
+
+#: inc/portfolio-post-type.php:101
+#@ salmoncream
+msgid "Description"
+msgstr ""
+
+#: inc/portfolio-post-type.php:103
+#@ salmoncream
+msgid "Project informations."
+msgstr ""
+
+#: inc/portfolio-post-type.php:108
+#: single-portfolio.php:39
+#@ salmoncream
+msgid "Link"
+msgstr ""
+
+#: inc/portfolio-post-type.php:110
+#@ salmoncream
+msgid "A link to the projects website. www.yoursite.com"
+msgstr ""
+
+#: inc/portfolio-post-type.php:114
+#@ salmoncream
+msgid "Media"
+msgstr ""
+
+#: inc/portfolio-post-type.php:116
+#@ salmoncream
+msgid "Use this box for images, videos etc."
+msgstr ""
+
+#: inc/template-tags.php:34
+#@ salmoncream
+msgid "Post navigation"
+msgstr ""
+
+#: inc/template-tags.php:38
+#@ salmoncream
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr ""
+
+#: inc/template-tags.php:39
+#@ salmoncream
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr ""
+
+#: inc/template-tags.php:44
+#@ salmoncream
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: inc/template-tags.php:48
+#@ salmoncream
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: inc/template-tags.php:71
+#@ salmoncream
+msgid "Pingback:"
+msgstr ""
+
+#: inc/template-tags.php:91
+#@ salmoncream
+msgid "Admin - "
+msgstr ""
+
+#: inc/template-tags.php:101
+#, php-format
+#@ salmoncream
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: inc/template-tags.php:116
+#@ salmoncream
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/template-tags.php:139
+#, php-format
+#@ salmoncream
+msgid "<span class=\"byline\">By <span class=\"author vcard\"><a class=\"url fn n\" href=\"%1$s\" title=\"%2$s\" rel=\"author\">%3$s</a></span></span> on <time class=\"entry-date\" datetime=\"%4$s\">%5$s</time>"
+msgstr ""
+
+#: inc/template-tags.php:141
+#, php-format
+#@ salmoncream
+msgid "View all posts by %s"
+msgstr ""
+
+#: inc/theme-options.php:38
+#@ salmoncream
+msgid "Blog"
+msgstr ""
+
+#: inc/theme-options.php:50
+#@ salmoncream
+msgid "Bahama Blue"
+msgstr ""
+
+#: inc/theme-options.php:51
+#@ salmoncream
+msgid "Concrete Gray"
+msgstr ""
+
+#: inc/theme-options.php:57
+#: inc/theme-options.php:157
+#@ salmoncream
+msgid "General Settings"
+msgstr ""
+
+#: inc/theme-options.php:62
+#@ salmoncream
+msgid "HiDPI Logo"
+msgstr ""
+
+#: inc/theme-options.php:63
+#@ salmoncream
+msgid "Check this box if you want to display your logo ready for Retina and other HiDPI Displays. For example: If your image file is 500x144px it will be displayed as 250x72px and super sharp."
+msgstr ""
+
+#: inc/theme-options.php:70
+#@ salmoncream
+msgid "Logo Upload"
+msgstr ""
+
+#: inc/theme-options.php:71
+#@ salmoncream
+msgid "Upload a logo for your website. Maximun height of 72px is recommended."
+msgstr ""
+
+#: inc/theme-options.php:77
+#@ salmoncream
+msgid "Favicon Upload"
+msgstr ""
+
+#: inc/theme-options.php:78
+#@ salmoncream
+msgid "Upload a 16x16px or 32x32px (for HiDPI Displays) PNG/GIF image for the favicon of your website."
+msgstr ""
+
+#: inc/theme-options.php:84
+#@ salmoncream
+msgid "Infinite Scroll"
+msgstr ""
+
+#: inc/theme-options.php:85
+#@ salmoncream
+msgid "Check these boxes if you want to enable Infinite Scroll Feature."
+msgstr ""
+
+#: inc/theme-options.php:93
+#@ salmoncream
+msgid "Contact Form Email Address"
+msgstr ""
+
+#: inc/theme-options.php:94
+#@ salmoncream
+msgid "Enter the email address to receive emails from the contact form. Leave blank to use admin email."
+msgstr ""
+
+#: inc/theme-options.php:100
+#@ salmoncream
+msgid "Footer Text"
+msgstr ""
+
+#: inc/theme-options.php:101
+#@ salmoncream
+msgid "Insert some text to display on the left side of the footer."
+msgstr ""
+
+#: inc/theme-options.php:107
+#@ salmoncream
+msgid "Style Options"
+msgstr ""
+
+#: inc/theme-options.php:112
+#@ salmoncream
+msgid "Color Scheme"
+msgstr ""
+
+#: inc/theme-options.php:113
+#@ salmoncream
+msgid "Check one of the Boxes to switch the style of the Theme."
+msgstr ""
+
+#: inc/theme-options.php:121
+#@ salmoncream
+msgid "Custom CSS"
+msgstr ""
+
+#: inc/theme-options.php:122
+#@ salmoncream
+msgid "Add some CSS to your theme."
+msgstr ""
+
+#: inc/theme-options.php:150
+#@ salmoncream
+msgid "Site Title"
+msgstr ""
+
+#: inc/theme-options.php:195
+#@ salmoncream
+msgid "Color Schemes"
+msgstr ""
+
+#: no-results.php:13
+#@ salmoncream
+msgid "Nothing Found"
+msgstr ""
+
+#: no-results.php:19
+#, php-format
+#@ salmoncream
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: no-results.php:23
+#@ salmoncream
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: no-results.php:28
+#@ salmoncream
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: page-contact.php:50
+#@ salmoncream
+msgid "Spammer? The spam protection field needs to be empty."
+msgstr ""
+
+#: page-contact.php:56
+#@ salmoncream
+msgid "Please enter your name."
+msgstr ""
+
+#: page-contact.php:65
+#@ salmoncream
+msgid "Please enter your e-mail adress."
+msgstr ""
+
+#: page-contact.php:68
+#@ salmoncream
+msgid "Please enter a valid e-mail address."
+msgstr ""
+
+#: page-contact.php:73
+#@ salmoncream
+msgid "Please enter a subject."
+msgstr ""
+
+#: page-contact.php:78
+#@ salmoncream
+msgid "Please enter a message."
+msgstr ""
+
+#: page-contact.php:112
+#@ salmoncream
+msgid "via Contact request from"
+msgstr ""
+
+#: page-contact.php:113
+#@ salmoncream
+msgid "Message:"
+msgstr ""
+
+#: page-contact.php:114
+#@ salmoncream
+msgid "Name:"
+msgstr ""
+
+#: page-contact.php:115
+#@ salmoncream
+msgid "E-mail:"
+msgstr ""
+
+#: page-contact.php:116
+#@ salmoncream
+msgid "IP:"
+msgstr ""
+
+#: page-contact.php:143
+#@ salmoncream
+msgid "Thank you for leaving a message."
+msgstr ""
+
+#: page-contact.php:149
+#@ salmoncream
+msgid "Name"
+msgstr ""
+
+#: page-contact.php:160
+#@ salmoncream
+msgid "Email"
+msgstr ""
+
+#: page-contact.php:171
+#@ salmoncream
+msgid "Subject"
+msgstr ""
+
+#: page-contact.php:192
+#@ salmoncream
+msgid "Spam protection"
+msgstr ""
+
+#: page-contact.php:198
+#@ salmoncream
+msgid "Send"
+msgstr ""
+
+#: page-portfolio.php:36
+#: taxonomy-skill.php:25
+#@ salmoncream
+msgid "Portfolio navigation"
+msgstr ""
+
+#: page-portfolio.php:39
+#: taxonomy-skill.php:28
+#@ salmoncream
+msgid "<span class=\"meta-nav\">&larr;</span> Older"
+msgstr ""
+
+#: page-portfolio.php:43
+#: taxonomy-skill.php:32
+#@ salmoncream
+msgid "Newer <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: search.php:17
+#, php-format
+#@ salmoncream
+msgid "Search Results for: %s"
+msgstr ""
+
+#: searchform.php:9
+#@ salmoncream
+msgctxt "assistive text"
+msgid "Search"
+msgstr ""
+
+#: searchform.php:10
+#@ salmoncream
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr ""
+
+#: searchform.php:11
+#@ salmoncream
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
+
+#: sidebar-page.php:13
+#@ salmoncream
+msgid "Fill in some content"
+msgstr ""
+
+#: sidebar.php:24
+#@ salmoncream
+msgid "Meta"
+msgstr ""
+
+#: single.php:28
+#@ salmoncream
+msgid "Author"
+msgstr ""
+

@@ -1,0 +1,6 @@
+venv
+secrets.py
+*.pyc
+images
+.DS_Store
+published.txt

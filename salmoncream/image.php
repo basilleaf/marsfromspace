@@ -1,0 +1,1 @@
+<?php wp_redirect(wp_get_attachment_url( $post->ID ), 301); ?>
