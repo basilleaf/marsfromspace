@@ -278,6 +278,7 @@ a:focus {
   text-transform: none;
   font-weight: normal;
   font-size: 48px;
+  font-size: 42px;
   font-family: "Titan One", "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 43.2px;
 }
@@ -314,7 +315,7 @@ a:focus {
   color: #40a5b8;
   text-decoration: none;
   font-weight: 300;
-  font-size: 36px;
+  font-size: 28px;
   line-height: 48px;
   padding: 24px;
 }
@@ -769,6 +770,7 @@ a:focus {
   margin: 0;
   width: 25%;
   text-align: center;
+
 }
 .tile .tile-content {
   transition-delay: .9s !important;
@@ -782,12 +784,16 @@ a:focus {
   height: 100%;
   color: #fdfdfd;
   text-transform: uppercase;
+  opacity: 0.6;
 }
 .tile .tile-content a {
   color: #fdfdfd;
+
 }
+
 .tile:nth-child(5n+1) .tile-content {
   background: #4c4c4c;
+
 }
 .tile:nth-child(5n+2) .tile-content {
   background: #4c4c4c;
@@ -809,7 +815,6 @@ a:focus {
 .tile.post .entry-header {
   margin: 0 0 72px 0;
   /* 0 0 48px 0 */
-
   padding: 0;
   height: 48px;
   /* 48px */
@@ -820,7 +825,7 @@ a:focus {
   height: 48px;
   /* 48px */
 
-  font-size: 20px;
+  font-size: 18px;
   /* 20px */
 
   line-height: 24px;
@@ -839,9 +844,11 @@ a:focus {
 .tile.post:hover .tile-content {
   top: 0;
   margin-top: 0;
+
 }
 .tile.post a:hover {
   text-decoration: none;
+
 }
 /* =Portfolio Tiles
 ----------------------------------------------- */
@@ -861,8 +868,10 @@ a:focus {
   top: 30%;
   width: 100%;
   font-size: 36px;
+  font-size: 24px;
   line-height: 36px;
   padding: 0 24px;
+
 }
 .tile.portfolio .tile-content h3 {
   position: absolute;
@@ -879,7 +888,7 @@ a:focus {
 }
 .tile.portfolio:hover .tile-content {
   top: 0;
-  opacity:0.7;
+
 }
 /* =Infinite Loader
 ----------------------------------------------- */
@@ -2575,7 +2584,7 @@ input[type="submit"].btn.btn-mini {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-size: 24px;
+  font-size: 32px;
   line-height: 24px;
 }
 .touch .flex-direction-nav .flex-prev {
