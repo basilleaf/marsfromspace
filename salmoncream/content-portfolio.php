@@ -37,7 +37,7 @@
 
             </a>
 
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="tile-content <?php if ( !has_post_thumbnail())  : ?> no-thumbnail<?php endif; ?>" rel="bookmark">
+            <a href="<?php the_permalink(); ?>" class="tile-content <?php if ( !has_post_thumbnail())  : ?> no-thumbnail<?php endif; ?>" rel="bookmark">
 
                 <h2 class="entry-title"><?php the_title(); ?></h2>
 
