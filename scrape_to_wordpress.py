@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 from scraper_publisher_lib import *
 
-# currently we are counting down..
-
+# currently we are counting down to 1..
 page_min = 34
 page_max = 34
 
