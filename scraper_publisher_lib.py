@@ -49,7 +49,7 @@ class Scrape():
             try:
                 index_page = urllib2.urlopen(url).read()
             except urllib2.HTTPError:
-                print('FAIL ' + url)
+                print('urlopen fail ' + url)
                 continue
 
             try:
@@ -82,16 +82,19 @@ class Scrape():
                 pass  # none or strange link contents no worries
 
         if not img:
+            print("no suitable image found")
             return False  # if we can't get the 1280 image we are passing on this page ..
 
         # fetch the image so we have it locally
         local_img_file = self.fetch_remote_file(self.base_url_wallpapers + img, True)
         if not local_img_file:
-            return False  # ccouldn't fetch remot file it, move along
+            print("couldn't fetch remot file it, move along")
+            return False
 
         try:
             title = soup.findAll('a', {'id':'example1'})[0].get('title')
         except IndexError:
+            print("could find title")
             return False  # no title no post move along
 
         # scrape the content and clean it up a bit..
