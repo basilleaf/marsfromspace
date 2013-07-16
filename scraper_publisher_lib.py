@@ -16,6 +16,9 @@ from secrets import *
 
 
 class Scrape:
+    """
+    for scrapering
+    """
 
     def __init__(self, **kwargs):
         self.base_url = kwargs['base_url']
@@ -39,6 +42,11 @@ class Scrape:
                 return False
 
     def grab_all_page_urls(self, page_min, page_max):
+        """
+
+        grab all urls for detail pages as found on a single index page
+
+        """
 
         page_urls = []
         print self.base_url
@@ -69,6 +77,9 @@ class Scrape:
         return all_links
 
     def grab_content_from_page(self, detail_url):
+        """
+        from detail page
+        """
 
         try:
             index_page = urllib2.urlopen(detail_url).read()
@@ -117,9 +128,11 @@ class Scrape:
         return (title, content, detail_url, local_img_file)
 
     def prepare_content(self, content, detail_url):
+        """
+        some hacking of the text content found
+        """
 
-        # makes inline reletive links into direct links
-
+        # makes some inline reletive links into direct links
         content = content.replace('\n', ' ').replace('href="images/',
                 'target = "_blank" href="http://hirise.lpl.arizona.edu/images/'
                 ).replace('href="E',
@@ -141,7 +154,6 @@ class Scrape:
                                     )
 
         # add credit
-
         content += \
             '<p>More info and image formats at <a target = "_blank" href = "%s">%s</a></p>' \
             % (detail_url, detail_url)
@@ -151,6 +163,9 @@ class Scrape:
 
 
 class Publish:
+    """
+    for publishing to WP
+    """
 
     def __init__(self, **kwargs):
         self.published_url = kwargs['published_url']
@@ -234,6 +249,9 @@ class Publish:
             self.log_as_published(img_id)
 
     def remove_from_published(self, img_id):
+        """
+        mostly a utility func
+        """
 
         # get the previously published list
 
