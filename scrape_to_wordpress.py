@@ -10,7 +10,6 @@ python scrape_to_wordpress.py 33 33
 
 """
 import sys
-import os
 from scraper_publisher_lib import *
 
 if not sys.argv[1]:
