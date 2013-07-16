@@ -1,10 +1,23 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+info = """
+
+scrape Mars From Space and post to Wordpress
+page numbers to scrape as sys args
+run like:
+
+python scrape_to_wordpress.py 33 33
+
+"""
+import sys
 from scraper_publisher_lib import *
 
+if not sys.argv[1]:
+    sys.exit("please provide page start and end numbers \n " + info)
+
 # currently we are counting down to 1..
-page_min = 34
-page_max = 34
+page_min = int(sys.argv[1])
+page_max = int(sys.argv[2])
 
 posts_limit = 5  # only publish this many to WP at a time
 
@@ -25,12 +38,15 @@ publish = Publish(published_url=published_url,
 # grab links to all the detail pages we need
 all_links = scrape.grab_all_page_urls(page_min, page_max)
 
-# creds on heroku go like..
-WP_USER = os.environ['WP_USER']
-WP_PW = os.environ['WP_PW']
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-BUCKET_NAME = os.environ['BUCKET_NAME']
+try:
+    from secrets import *
+except ImportError:
+    # creds on heroku go like..
+    WP_USER = os.environ['WP_USER']
+    WP_PW = os.environ['WP_PW']
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    BUCKET_NAME = os.environ['BUCKET_NAME']
 
 
 # grab content each page and post to WP if not previously published

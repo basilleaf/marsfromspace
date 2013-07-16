@@ -12,7 +12,6 @@ from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.methods.posts import NewPost
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import media, posts
-from secrets import *
 
 
 class Scrape:
@@ -44,7 +43,8 @@ class Scrape:
     def grab_all_page_urls(self, page_min, page_max):
         """
 
-        grab all urls for detail pages as found on a single index page
+        grab all urls for detail pages as found on a range of index pages
+        it counts backward from page_max to page_min
 
         """
 
