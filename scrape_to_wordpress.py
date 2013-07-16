@@ -24,7 +24,7 @@ posts_limit = 5  # only publish this many to WP at a time
 
 base_url = 'http://hirise.lpl.arizona.edu/releases/all_captions.php'
 base_url_wallpapers = 'http://hirise.lpl.arizona.edu/'
-local_img_dir = '/Users/lballard/projects/marsfromspace/images/'
+local_img_dir = '/tmp/'
 published_url = 'https://s3.amazonaws.com/marsfromspace/published.txt'
 
 response = urllib2.urlopen(published_url)
