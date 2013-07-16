@@ -13,6 +13,16 @@ from wordpress_xmlrpc.methods.posts import NewPost
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import media, posts
 
+try:
+    from secrets import *
+except ImportError:
+    # creds on heroku go like..
+    WP_USER = os.environ['WP_USER']
+    WP_PW = os.environ['WP_PW']
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    BUCKET_NAME = os.environ['BUCKET_NAME']
+
 
 class Scrape:
     """

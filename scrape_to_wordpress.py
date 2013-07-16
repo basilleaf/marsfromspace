@@ -39,17 +39,6 @@ publish = Publish(published_url=published_url,
 # grab links to all the detail pages we need
 all_links = scrape.grab_all_page_urls(page_min, page_max)
 
-try:
-    from secrets import *
-except ImportError:
-    # creds on heroku go like..
-    WP_USER = os.environ['WP_USER']
-    WP_PW = os.environ['WP_PW']
-    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    BUCKET_NAME = os.environ['BUCKET_NAME']
-
-
 # grab content each page and post to WP if not previously published
 # limit
 found = False
