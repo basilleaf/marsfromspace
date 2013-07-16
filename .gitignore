@@ -5,3 +5,4 @@ images
 .DS_Store
 published.txt
 *.bak
+scraperwiki.py  # this is generated
