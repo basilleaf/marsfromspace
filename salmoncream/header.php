@@ -13,6 +13,8 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
+<link rel="alternate" type="application/rss+xml" title="Mars From Space &raquo; Feed" href="http://www.marsfromspace.com/feed/?post_type=portfolio" />
+
 <?php wp_head(); ?>
 </head>
 
