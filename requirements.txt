@@ -8,6 +8,7 @@ django-tastypie==0.10.0
 django-toolbelt==0.0.1
 gunicorn==18.0
 ipython==0.13.2
+mimeparse==0.1.3
 psycopg2==2.5.1
 python-dateutil==2.1
 python-wordpress-xmlrpc==2.2
