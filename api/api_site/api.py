@@ -1,6 +1,7 @@
 # myapp/api.py
 from tastypie.resources import ModelResource
 from api_site.models import DetailPage
+from serializers import CSVSerializer
 
 
 class EntryResource(ModelResource):
