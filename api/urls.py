@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from api_site.models import DetailPage
-from api_site.api improt EntryResource
+from api_site.api import EntryResource
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
