@@ -1,6 +1,6 @@
 # myapp/api.py
 from tastypie.resources import ModelResource
-from api.models import DetailPage
+from api_site.models import DetailPage
 
 
 class EntryResource(ModelResource):
