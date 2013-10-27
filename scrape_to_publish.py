@@ -12,7 +12,7 @@ python scrape_to_publish.py 88 90
 
 """
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fooproject.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.settings")
 
 from scraper_publisher_lib import *
 from api.api_site.models import DetailPage
