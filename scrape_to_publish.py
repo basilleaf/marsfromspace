@@ -11,6 +11,7 @@ python scrape_to_publish.py 33 33
 python scrape_to_publish.py 88 90
 
 """
+import sys
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.settings")
 
