@@ -12,6 +12,7 @@ class DetailPage(models.Model):
     content = models.TextField()
     detail_url = models.CharField(max_length=250, unique=True)
     img_url = models.CharField(max_length=255)
+    credit = models.CharField(max_length=30)
 
     def __unicode__(self):
         return self.title
@@ -20,6 +21,8 @@ class DetailPage(models.Model):
         # For automatic slug generation.
         if not self.slug:
             self.slug = slugify(self.title)[:50]
+
+        self.credit = 'NASA/JPL/University of Arizona'
 
         return super(DetailPage, self).save(*args, **kwargs)
 
