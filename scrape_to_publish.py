@@ -79,8 +79,7 @@ for detail_url in all_detail_page_urls:
             post_count = post_count + 1
 
     # post to api
-    page = DetailPage(title=title, content=content, detail_url=detail_url, img_url=img_url)
-    page.save()
+    DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
 
 
 if not found:
