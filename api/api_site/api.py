@@ -8,5 +8,5 @@ class EntryResource(ModelResource):
         queryset = DetailPage.objects.all()
         resource_name = 'entry'
         max_limit = None
-
+        serializer = CSVSerializer(formats=['json', 'csv'])
 
