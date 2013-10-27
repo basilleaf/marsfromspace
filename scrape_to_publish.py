@@ -12,8 +12,7 @@ python scrape_to_publish.py 88 90
 
 """
 from scraper_publisher_lib import *
-from api import settings
-from api.api_site import models
+from api.models import DetailPage
 
 if not sys.argv[1]:
     sys.exit("please provide page start and end numbers \n " + info)
