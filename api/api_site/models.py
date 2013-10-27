@@ -21,5 +21,5 @@ class DetailPage(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)[:50]
 
-        return super(Entry, self).save(*args, **kwargs)
+        return super(DetailPage, self).save(*args, **kwargs)
 
