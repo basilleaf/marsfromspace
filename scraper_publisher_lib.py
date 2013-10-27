@@ -17,7 +17,7 @@ from wordpress_xmlrpc.methods import media, posts
 try:
     from secrets import *
 except ImportError:
-    # creds on heroku go like..
+    # creds on heroku go lololol
     WP_USER = os.environ['WP_USER']
     WP_PW = os.environ['WP_PW']
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
@@ -114,8 +114,10 @@ class Scrape:
 
         # fetch the image so we have it locally
 
+        img_url = self.base_url_wallpapers + img
         local_img_file = \
-            self.fetch_remote_file(self.base_url_wallpapers + img, True)
+            self.fetch_remote_file(img_url, True)
+
         if not local_img_file:
             print "couldn't fetch remot file it, move along"
             return False
@@ -136,7 +138,7 @@ class Scrape:
         content = soup_content.prettify()
         content = self.prepare_content(content, detail_url)
 
-        return (title, content, detail_url, local_img_file)
+        return (title, content, detail_url, local_img_file, img_url)
 
     def prepare_content(self, content, detail_url):
         """
@@ -172,8 +174,7 @@ class Scrape:
 
         return content
 
-
-class Publish:
+class WPPublish:
     """
     for publishing to WP
     """
@@ -277,7 +278,6 @@ class Publish:
         self.previously_published.remove(img_id)
 
         # update the published log
-
         s3 = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
         bucket = s3.create_bucket(BUCKET_NAME)
         key_name = self.published_url.split('/').pop()
@@ -285,3 +285,6 @@ class Publish:
         key = bucket.new_key(key_name)
         key.set_contents_from_string('\n'.join(self.previously_published))
         key.set_acl('public-read')
+
+
+
