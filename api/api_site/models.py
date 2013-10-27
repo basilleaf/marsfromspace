@@ -10,7 +10,7 @@ class DetailPage(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField()
     content = models.TextField()
-    detail_url = models.CharField(max_length=250)
+    detail_url = models.CharField(max_length=250, unique=True)
     img_url = models.CharField(max_length=255)
 
     def __unicode__(self):
