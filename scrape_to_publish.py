@@ -80,7 +80,7 @@ for detail_url in all_detail_page_urls:
 
     # post to api
     obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
-    if created:
+    if not created:
         print "already exists"
 
 if not found:
