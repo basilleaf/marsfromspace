@@ -8,9 +8,11 @@ run like:
 
 python scrape_to_publish.py 33 33
 
+python scrape_to_publish.py 88 90
+
 """
-import sys
 from scraper_publisher_lib import *
+from api import settings
 from api.api_site import models
 
 if not sys.argv[1]:
@@ -41,7 +43,7 @@ all_detail_page_urls = scrape.grab_all_page_urls(page_min, page_max)
 
 # set to False if you don't wnat to publish to Wordpress
 # this will also cause it to ignore previously published list
-wordpress_publish = True
+wordpress_publish = False
 
 # grab content each page and publish to api and perhaps WP too
 found = False
