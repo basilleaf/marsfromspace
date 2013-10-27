@@ -87,7 +87,7 @@ class Scrape:
 
         return all_links
 
-    def grab_content_from_page(self, detail_url):
+    def grab_content_from_page(self, detail_url, fetch_local):
         """
         from detail page
         """
@@ -113,14 +113,14 @@ class Scrape:
             return False  # if we can't get the 1280 image we are passing on this page ..
 
         # fetch the image so we have it locally
-
         img_url = self.base_url_wallpapers + img
-        local_img_file = \
-            self.fetch_remote_file(img_url, True)
-
-        if not local_img_file:
-            print "couldn't fetch remot file it, move along"
-            return False
+        local_img_file = ''
+        if fetch_local:
+            local_img_file = \
+                self.fetch_remote_file(img_url, True)
+            if not local_img_file:
+                print "couldn't fetch remot file it, move along"
+                return False
 
         try:
             title = soup.findAll('a', {'id': 'example1'})[0].get('title'

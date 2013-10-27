@@ -66,7 +66,7 @@ for detail_url in all_detail_page_urls:
         print 'fetching data from ' + detail_url
         try:
             (title, content, detail_url, local_img_file, img_url) = \
-                scrape.grab_content_from_page(detail_url)
+                scrape.grab_content_from_page(detail_url, wordpress_publish)
         except:
             print 'nope'
             continue  # move along
