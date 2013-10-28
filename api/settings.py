@@ -1,11 +1,18 @@
 # Django settings for api project.
 import os
 import sys
+
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, PROJECT_ROOT)
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+
+WP_USER = os.environ['WP_USER']
+WP_PW = os.environ['WP_PW']
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+BUCKET_NAME = os.environ['BUCKET_NAME']
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -87,7 +94,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'c^ba_wk^7%i!ciogrd(bu&me&5$)=5=fwrm!$)e6=@q&h)$kw1'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
