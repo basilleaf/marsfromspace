@@ -164,7 +164,7 @@ LOGGING = {
 }
 
 # removes tastypie's 1000 limit
-API_LIMIT_PER_PAGE = 0
+# API_LIMIT_PER_PAGE = 0
 
 # Parse database configuration from
 import dj_database_url
