@@ -1,6 +1,7 @@
 Scrapes Mars Reconnaissance Orbiter (HiRISE) press release images and content from http://hirise.lpl.arizona.edu/releases/all_captions.php and publish to a Wordpress blog http://www.marsfromspace.com/about/
 
-New: added a django + tastypie api, if anyone wants to grab all the data we scraped: https://github.com/basilleaf/marsfromspace/tree/master/api>
+New: added a django + tastypie api, if anyone wants to grab all the data we scraped:
+<https://github.com/basilleaf/marsfromspace/tree/master/api>
 
 Salmoncream is our hacked WP theme.
 
