@@ -65,6 +65,7 @@ class Scrape:
         # construct the index page urls from self.base_url and page no
 
         all_links = []
+        urls_by_page = {}
         for i in range(page_max + 1, page_min, -1):
 
             url = self.base_url + '?page=%s' % str(i)
