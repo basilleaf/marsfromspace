@@ -74,8 +74,7 @@ for detail_url in all_detail_page_urls:
         if wordpress_publish == True:
             print 'posting to WP: ' + title
             # post to WP
-            args = (title, content, detail_url, local_img_file, previously_published, True)
-            wp_publish.post_to_wordpress(**args)
+            wp_publish.post_to_wordpress(title, content, detail_url, local_img_file, previously_published, True)
             post_count = post_count + 1
 
         # post to api (if not already there)
