@@ -15,7 +15,8 @@ import sys
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.settings")
 
-from scraper_publisher_lib import *
+from scrape import Scrape
+from publish import WPPublish
 from api.api_site.models import DetailPage
 
 if not sys.argv[1]:

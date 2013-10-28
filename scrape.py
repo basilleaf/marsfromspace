@@ -1,29 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import os
 import re
-from random import randint
 from time import sleep
 import urllib
 import urllib2
-import boto
 from bs4 import BeautifulSoup
-import xmlrpclib
-from wordpress_xmlrpc import Client, WordPressPost
-from wordpress_xmlrpc.methods.posts import NewPost
-from wordpress_xmlrpc.compat import xmlrpc_client
-from wordpress_xmlrpc.methods import media, posts
-
-try:
-    from secrets import *
-except ImportError:
-    # creds on heroku go lololol
-    WP_USER = os.environ['WP_USER']
-    WP_PW = os.environ['WP_PW']
-    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    BUCKET_NAME = os.environ['BUCKET_NAME']
-
 
 class Scrape:
     """
@@ -83,7 +64,7 @@ class Scrape:
                 for cell in all_cells:
                     detail_url = '/'.join(self.base_url.split('/')[:-2]) + '/' + cell.a.get('href').split('/')[1:][0]
                     if detail_url == 'http://hirise.lpl.arizona.edu/releases':
-                        continue  ## we don want this one ever kthxbai
+                        continue  ## we don want this one ever
                     all_links.append(detail_url)
                     urls_by_page[detail_url] = i
 
@@ -178,6 +159,5 @@ class Scrape:
         content += '<p>Image: NASA/JPL/University of Arizona </p>'
 
         return content
-
 
 
