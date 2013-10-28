@@ -42,7 +42,7 @@ wp_publish = WPPublish(published_url=published_url,
                   previously_published=previously_published)
 
 # grab links to all the detail pages we need
-all_detail_page_urls = scrape.grab_all_page_urls(page_min, page_max)
+all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_max)
 
 # set to False if you don't wnat to publish to Wordpress
 # this will also cause it to ignore previously published list
@@ -51,7 +51,15 @@ wordpress_publish = True
 # grab content each page and publish to api and perhaps WP too
 found = False
 post_count = 0
+last_page = 0
 for detail_url in all_detail_page_urls:
+
+    # want to track what page of their wesite we are on
+    this_page = urls_by_page[detail_url]
+    if last_page != urls_by_page[detail_url]:
+        print "page " + str(this_page)
+    last_page = this_page
+
 
     if wordpress_publish:
         # we limit the amount of pages we post to wordpress at a time
