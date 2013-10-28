@@ -88,7 +88,7 @@ class Scrape:
             except:
                 pass  # malformity
 
-        return all_links
+        return (all_links, urls_by_page)
 
     def grab_content_from_page(self, detail_url, fetch_local):
         """
