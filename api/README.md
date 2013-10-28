@@ -15,3 +15,5 @@ It is being updated daily if any new images/pages are added to <a href = "http:/
 ### you can also get CSV
 
 <http://gentle-harbor-6736.herokuapp.com/api/entry/?format=csv>
+
+-- as well as other TastyPie things such as page, offset, limit, etc..
