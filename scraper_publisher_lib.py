@@ -82,7 +82,7 @@ class Scrape:
                 all_cells = index_soup.findAll('td')  # each listing is in a table cell
                 for cell in all_cells:
                     detail_url = '/'.join(self.base_url.split('/')[:-2]) + '/' + cell.a.get('href').split('/')[1:][0]
-                    if detail_url == 'http://hirise.lpl.arizona.edu/releases'
+                    if detail_url == 'http://hirise.lpl.arizona.edu/releases':
                         continue  ## we don want this one ever kthxbai
                     all_links.append(detail_url)
                     urls_by_page[detail_url] = i
