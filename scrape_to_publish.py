@@ -78,8 +78,8 @@ for detail_url in all_detail_page_urls:
             wp_publish.post_to_wordpress(**args)
             post_count = post_count + 1
 
-    # post to api (if not already there)
-    obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
+        # post to api (if not already there)
+        obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
 
 
 if not found:
