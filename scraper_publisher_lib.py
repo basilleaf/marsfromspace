@@ -80,8 +80,7 @@ class Scrape:
                 index_soup = BeautifulSoup(index_page)
                 all_cells = index_soup.findAll('td')  # each listing is in a table cell
                 for cell in all_cells:
-                    detail_url = '/'.join(self.base_url.split('/')[:-2]) +
-                                 '/' + cell.a.get('href').split('/')[1:][0]
+                    detail_url = '/'.join(self.base_url.split('/')[:-2]) + '/' + cell.a.get('href').split('/')[1:][0]
                     all_links.append(detail_url)
                     urls_by_page[detail_url] = i
 
