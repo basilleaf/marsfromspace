@@ -64,14 +64,12 @@ class Scrape:
 
         # construct the index page urls from self.base_url and page no
 
-        urls_by_page = {}
-        for i in range(page_max + 1, page_min, -1):
-            page_url = self.base_url + '?page=%s' % str(i)
-            page_urls.append(page_url)
-            urls_by_page[page_url] = i
-
         all_links = []
-        for url in page_urls:
+        for i in range(page_max + 1, page_min, -1):
+
+            url = self.base_url + '?page=%s' % str(i)
+            page_urls.append(self.base_url + '?page=%s' % str(i))
+
             try:
                 index_page = urllib2.urlopen(url).read()
             except urllib2.HTTPError:
@@ -82,13 +80,15 @@ class Scrape:
                 index_soup = BeautifulSoup(index_page)
                 all_cells = index_soup.findAll('td')  # each listing is in a table cell
                 for cell in all_cells:
-                    all_links.append('/'.join(self.base_url.split('/'
-                            )[:-2]) + '/' + cell.a.get('href').split('/'
-                            )[1:][0])
+                    detail_url = '/'.join(self.base_url.split('/')[:-2]) +
+                                 '/' + cell.a.get('href').split('/')[1:][0]
+                    all_links.append(detail_url)
+                    urls_by_page[detail_url] = i
+
             except:
                 pass  # malformity
 
-        return (all_links, urls_by_page)
+        return all_links, urls_by_page
 
     def grab_content_from_page(self, detail_url, fetch_local):
         """
