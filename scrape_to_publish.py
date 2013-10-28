@@ -46,7 +46,7 @@ all_detail_page_urls = scrape.grab_all_page_urls(page_min, page_max)
 
 # set to False if you don't wnat to publish to Wordpress
 # this will also cause it to ignore previously published list
-wordpress_publish = False
+wordpress_publish = True
 
 # grab content each page and publish to api and perhaps WP too
 found = False
@@ -78,10 +78,9 @@ for detail_url in all_detail_page_urls:
             wp_publish.post_to_wordpress(**args)
             post_count = post_count + 1
 
-    # post to api
+    # post to api (if not already there)
     obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
-    if not created:
-        print "already exists"
+
 
 if not found:
     print 'all links were previously published'

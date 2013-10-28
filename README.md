@@ -1,4 +1,4 @@
-Scrapes Mars Reconnaissance Orbiter (HiRISE) press release images and content from http://hirise.lpl.arizona.edu/releases/all_captions.php and publish to a Wordpress blog http://www.marsfromspace.com/about/
+Scrapes Mars Reconnaissance Orbiter (HiRISE) press release images and content from http://hirise.lpl.arizona.edu/releases/all_captions.php and publish to a Wordpress blog http://www.marsfromspace.com/about/ and an API
 
 Salmoncream is our hacked WP theme.
 
