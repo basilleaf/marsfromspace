@@ -31,7 +31,7 @@ if not sys.argv[1]:
 page_min = int(sys.argv[1])
 page_max = int(sys.argv[2])
 
-posts_limit = 5  # only publish this many to WP at a time
+posts_limit = 1  # only publish this many to WP at a time
 
 base_url = 'http://hirise.lpl.arizona.edu/releases/all_captions.php'
 base_url_wallpapers = 'http://hirise.lpl.arizona.edu/'
@@ -50,7 +50,7 @@ all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_ma
 
 # set to False if you don't wnat to publish to Wordpress
 # this will also cause it to ignore previously published list
-wordpress_publish = False
+wordpress_publish = True
 
 # grab content each page and publish to api and perhaps WP too
 found = False

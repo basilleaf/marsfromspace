@@ -102,8 +102,7 @@ class WPPublish:
         # get the previously published list
 
         response = urllib2.urlopen(self.published_url)
-        self.previously_published = [p.rstrip() for p in
-                response.readlines()]
+        self.previously_published = [p.rstrip() for p in response.readlines()]
 
         # grab previously published
 

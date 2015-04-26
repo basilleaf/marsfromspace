@@ -13,7 +13,7 @@ class DetailPage(models.Model):
     detail_url = models.CharField(max_length=250, unique=True)
     img_url = models.CharField(max_length=255)
     credit = models.CharField(max_length=30)
-
+    
     def __unicode__(self):
         return self.title
 
