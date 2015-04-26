@@ -85,9 +85,13 @@ class Scrape:
         img_url = self.base_url_wallpapers + img
         local_img_file = ''
 
+        local_img_file = self.fetch_remote_file(img_url, True)
+        if not local_img_file:
+            print "couldn't fetch remote file, move along"
+            return False
+
         try:
-            title = soup.findAll('a', {'id': 'example1'})[0].get('title'
-                    )
+            title = soup.findAll('a', {'id': 'example1'})[0].get('title')
         except IndexError:
             print 'could not find title'
             return False  # no title no post move along
@@ -108,17 +112,16 @@ class Scrape:
         """
 
         # makes some inline reletive links into direct links
-        content = content
-                .replace('\n', ' ')
-                .replace('href="images/', 'target = "_blank" href="http://hirise.lpl.arizona.edu/images/')
-                .replace('href="E', 'target = "_blank" href="http://hirise.lpl.arizona.edu/E')
-                .replace('href="T', 'target = "_blank" href="http://hirise.lpl.arizona.edu/T')
-                .replace('href="r', 'target = "_blank" href="http://hirise.lpl.arizona.edu/r')
-                .replace('href="j', 'target = "_blank" href="http://hirise.lpl.arizona.edu/j')
-                .replace('href="p', 'target = "_blank" href="http://hirise.lpl.arizona.edu/p')
-                .replace('href="d', 'target = "_blank" href="http://hirise.lpl.arizona.edu/d')
-                .replace('href="e', 'target = "_blank" href="http://hirise.lpl.arizona.edu/e')
-                .replace('href="P', 'target = "_blank" href="http://hirise.lpl.arizona.edu/P')
+        content = content.replace('\n', ' ')
+        content = content.replace('href="images/', 'target = "_blank" href="http://hirise.lpl.arizona.edu/images/')
+        content = content.replace('href="E', 'target = "_blank" href="http://hirise.lpl.arizona.edu/E')
+        content = content.replace('href="T', 'target = "_blank" href="http://hirise.lpl.arizona.edu/T')
+        content = content.replace('href="r', 'target = "_blank" href="http://hirise.lpl.arizona.edu/r')
+        content = content.replace('href="j', 'target = "_blank" href="http://hirise.lpl.arizona.edu/j')
+        content = content.replace('href="p', 'target = "_blank" href="http://hirise.lpl.arizona.edu/p')
+        content = content.replace('href="d', 'target = "_blank" href="http://hirise.lpl.arizona.edu/d')
+        content = content.replace('href="e', 'target = "_blank" href="http://hirise.lpl.arizona.edu/e')
+        content = content.replace('href="P', 'target = "_blank" href="http://hirise.lpl.arizona.edu/P')
 
         # add credit
         content += \

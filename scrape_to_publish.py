@@ -50,7 +50,7 @@ all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_ma
 
 # set to False if you don't wnat to publish to Wordpress
 # this will also cause it to ignore previously published list
-wordpress_publish = True
+wordpress_publish = False
 
 # grab content each page and publish to api and perhaps WP too
 found = False
@@ -58,8 +58,7 @@ post_count = 0
 last_page = 0
 for detail_url in all_detail_page_urls:
 
-    # want to track what page of their wesite we are on
-    this_page = urls_by_page[detail_url]
+    this_page = urls_by_page[detail_url]  # track what page of their wesite we are currently on
     if last_page != this_page:
         print "starting page " + str(this_page)
     last_page = this_page
@@ -90,7 +89,10 @@ for detail_url in all_detail_page_urls:
             post_count = post_count + 1
 
         # post to api (if not already there)
-        obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
+        try: 
+            obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
+        except django.db.utils.IntegrityError; 
+            pass  # it was already in the database
 
 
 if not found:
