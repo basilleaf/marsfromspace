@@ -1,3 +1,4 @@
+import os
 WP_USER = os.environ['WP_USER']
 WP_PW = os.environ['WP_PW']
 BUCKET_NAME = os.environ['BUCKET_NAME']
