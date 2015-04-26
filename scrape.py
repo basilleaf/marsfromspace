@@ -16,30 +16,13 @@ class Scrape:
         self.local_img_dir = kwargs['local_img_dir']
         self.base_url_wallpapers = kwargs['base_url_wallpapers']
 
-    def fetch_remote_file(self, url, repeat):
-        local_file = self.local_img_dir + url.split('/')[-1]
-        try:
-            print 'making ' + str(local_file)
-            urllib.urlretrieve(url, local_file)
-            with open(local_file):
-                pass
-            return local_file
-        except IOError:
-            if repeat:  # try again..
-                sleep(3)
-                return self.fetch_remote_file(url, False)
-            else:
-                print "can't fetch remote file " + url
-                return False
-
     def grab_all_page_urls(self, page_min, page_max):
         """
 
         grab all urls for detail pages as found on a range of index pages
-        it counts backward from page_max to page_min
+        it counts backward from attributes page_max to page_min
 
         """
-
         page_urls = []
         print self.base_url
 
@@ -73,9 +56,9 @@ class Scrape:
 
         return all_links, urls_by_page
 
-    def grab_content_from_page(self, detail_url, fetch_local):
+    def grab_content_from_detail_page(self, detail_url):
         """
-        from detail page
+        returns content from detail page 
         """
 
         try:
@@ -101,25 +84,17 @@ class Scrape:
         # fetch the image so we have it locally
         img_url = self.base_url_wallpapers + img
         local_img_file = ''
-        if fetch_local:
-            local_img_file = \
-                self.fetch_remote_file(img_url, True)
-            if not local_img_file:
-                print "couldn't fetch remot file it, move along"
-                return False
 
         try:
             title = soup.findAll('a', {'id': 'example1'})[0].get('title'
                     )
         except IndexError:
-            print 'could find title'
+            print 'could not find title'
             return False  # no title no post move along
 
         # scrape the content and clean it up a bit..
 
-        content = \
-            re.findall(r'<div class="caption-text">\s*(.*?)\s*<div class="social">'
-                       , ' '.join(str(soup).splitlines()))[0]
+        content = re.findall(r'<div class="caption-text">\s*(.*?)\s*<div class="social">', ' '.join(str(soup).splitlines()))[0]
         soup_content = BeautifulSoup(content)
         content = soup_content.prettify()
         content = self.prepare_content(content, detail_url)
@@ -128,29 +103,22 @@ class Scrape:
 
     def prepare_content(self, content, detail_url):
         """
-        some hacking of the text content found
+        this is a place to put hacking of the text content
+        like replacing their internal links to display as external links on our site
         """
 
         # makes some inline reletive links into direct links
-        content = content.replace('\n', ' ').replace('href="images/',
-                'target = "_blank" href="http://hirise.lpl.arizona.edu/images/'
-                ).replace('href="E',
-                          'target = "_blank" href="http://hirise.lpl.arizona.edu/E'
-                          ).replace('href="T',
-                                    'target = "_blank" href="http://hirise.lpl.arizona.edu/T'
-                                    ).replace('href="r',
-                'target = "_blank" href="http://hirise.lpl.arizona.edu/r'
-                ).replace('href="j',
-                          'target = "_blank" href="http://hirise.lpl.arizona.edu/j'
-                          ).replace('href="p',
-                                    'target = "_blank" href="http://hirise.lpl.arizona.edu/p'
-                                    ).replace('href="d',
-                'target = "_blank" href="http://hirise.lpl.arizona.edu/d'
-                ).replace('href="e',
-                          'target = "_blank" href="http://hirise.lpl.arizona.edu/e'
-                          ).replace('href="P',
-                                    'target = "_blank" href="http://hirise.lpl.arizona.edu/P'
-                                    )
+        content = content
+                .replace('\n', ' ')
+                .replace('href="images/', 'target = "_blank" href="http://hirise.lpl.arizona.edu/images/')
+                .replace('href="E', 'target = "_blank" href="http://hirise.lpl.arizona.edu/E')
+                .replace('href="T', 'target = "_blank" href="http://hirise.lpl.arizona.edu/T')
+                .replace('href="r', 'target = "_blank" href="http://hirise.lpl.arizona.edu/r')
+                .replace('href="j', 'target = "_blank" href="http://hirise.lpl.arizona.edu/j')
+                .replace('href="p', 'target = "_blank" href="http://hirise.lpl.arizona.edu/p')
+                .replace('href="d', 'target = "_blank" href="http://hirise.lpl.arizona.edu/d')
+                .replace('href="e', 'target = "_blank" href="http://hirise.lpl.arizona.edu/e')
+                .replace('href="P', 'target = "_blank" href="http://hirise.lpl.arizona.edu/P')
 
         # add credit
         content += \
@@ -159,5 +127,22 @@ class Scrape:
         content += '<p>Image: NASA/JPL/University of Arizona </p>'
 
         return content
+
+    def fetch_remote_file(self, url, repeat):
+        local_file = self.local_img_dir + url.split('/')[-1]
+        try:
+            print 'making ' + str(local_file)
+            urllib.urlretrieve(url, local_file)
+            with open(local_file):
+                pass
+            return local_file
+        except IOError:
+            if repeat:  # try again..
+                sleep(3)
+                return self.fetch_remote_file(url, False)
+            else:
+                print "can't fetch remote file " + url
+                return False
+
 
 

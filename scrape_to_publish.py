@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 info = """
 
+This script both publishes to Wordpress and updates the local API database. 
+These should probably be separate
+
 scrape Mars From Space and post to Wordpress
 page numbers to scrape as sys args
 run like:
@@ -9,6 +12,8 @@ run like:
 python scrape_to_publish.py 33 33
 
 python scrape_to_publish.py 88 90
+
+It also adds the published entry into the API database (for the tastypie api)
 
 """
 import sys
@@ -37,10 +42,8 @@ response = urllib2.urlopen(published_url)
 previously_published = [p.rstrip() for p in response.readlines()]
 
 # setup some tools
-scrape = Scrape(base_url=base_url, local_img_dir=local_img_dir,
-                base_url_wallpapers=base_url_wallpapers)
-wp_publish = WPPublish(published_url=published_url,
-                  previously_published=previously_published)
+scrape = Scrape(base_url=base_url, local_img_dir=local_img_dir, base_url_wallpapers=base_url_wallpapers)
+wp_publish = WPPublish(published_url=published_url, previously_published=previously_published)
 
 # grab links to all the detail pages we need
 all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_max)
@@ -75,7 +78,7 @@ for detail_url in all_detail_page_urls:
         print 'fetching data from ' + detail_url
         try:
             (title, content, detail_url, local_img_file, img_url) = \
-                scrape.grab_content_from_page(detail_url, wordpress_publish)
+                scrape.grab_content_from_detail_page(detail_url, wordpress_publish)
         except:
             print 'nope'
             continue  # move along
