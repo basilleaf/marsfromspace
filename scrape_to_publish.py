@@ -75,11 +75,13 @@ for detail_url in all_detail_page_urls:
         found = True
         print 'fetching data from ' + detail_url
         (title, content, detail_url, local_img_file, img_url) = scrape.grab_content_from_detail_page(detail_url)        
+        """
         try:
             (title, content, detail_url, local_img_file, img_url) = scrape.grab_content_from_detail_page(detail_url)
         except:
             print 'nope'
             continue  # move along
+        """
 
         print 'posting to WP: ' + title
         # post to WP
