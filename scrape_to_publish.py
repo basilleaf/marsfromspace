@@ -51,8 +51,6 @@ all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_ma
 
 # set to False if you don't wnat to publish to Wordpress
 # this will also cause it to ignore previously published list
-wordpress_publish = True
-
 # grab content each page and publish to api and perhaps WP too
 found = False
 post_count = 0
@@ -65,29 +63,28 @@ for detail_url in all_detail_page_urls:
     last_page = this_page
 
 
-    if wordpress_publish:
-        # we limit the amount of pages we post to wordpress at a time
-        if post_count > posts_limit:
-            print "finished publishing " + str(posts_limit) + " posts, see you tomorrow."
-            break;
+    # we limit the amount of pages we post to wordpress at a time
+    if post_count > posts_limit:
+        print "finished publishing " + str(posts_limit) + " posts, see you tomorrow."
+        break;
 
     img_id = detail_url.split('/')[-1]
-    if img_id not in previously_published or wordpress_publish == False:
+
+    if img_id not in previously_published:
         # this hasn't been published to WP yet OR we are only posting to api
         found = True
         print 'fetching data from ' + detail_url
+        (title, content, detail_url, local_img_file, img_url) = scrape.grab_content_from_detail_page(detail_url)        
         try:
-            (title, content, detail_url, local_img_file, img_url) = \
-                scrape.grab_content_from_detail_page(detail_url, wordpress_publish)
+            (title, content, detail_url, local_img_file, img_url) = scrape.grab_content_from_detail_page(detail_url)
         except:
             print 'nope'
             continue  # move along
 
-        if wordpress_publish == True:
-            print 'posting to WP: ' + title
-            # post to WP
-            wp_publish.post_to_wordpress(title, content, detail_url, local_img_file, previously_published, True)
-            post_count = post_count + 1
+        print 'posting to WP: ' + title
+        # post to WP
+        wp_publish.post_to_wordpress(title, content, detail_url, local_img_file, previously_published, True)
+        post_count = post_count + 1
 
         # post to api (if not already there)
         try: 
