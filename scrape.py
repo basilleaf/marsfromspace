@@ -64,7 +64,7 @@ class Scrape:
         try:
             index_page = urllib2.urlopen(detail_url).read()
         except urllib2.HTTPError:
-            print 'FAIL ' + detail_url
+            print 'FAIL could not urlopen ' + detail_url
             return False
 
         soup = BeautifulSoup(index_page)
@@ -84,7 +84,6 @@ class Scrape:
         # fetch the image so we have it locally
         img_url = self.base_url_wallpapers + img
         local_img_file = ''
-
         local_img_file = self.fetch_remote_file(img_url, True)
         if not local_img_file:
             print "couldn't fetch remote file, move along"
@@ -111,6 +110,9 @@ class Scrape:
         like replacing their internal links to display as external links on our site
         """
 
+        if not content: 
+            print 'empty content passed to scrape.prepare_content'
+
         # makes some inline reletive links into direct links
         content = content.replace('\n', ' ')
         content = content.replace('href="images/', 'target = "_blank" href="http://hirise.lpl.arizona.edu/images/')
@@ -124,10 +126,12 @@ class Scrape:
         content = content.replace('href="P', 'target = "_blank" href="http://hirise.lpl.arizona.edu/P')
 
         # add credit
-        content += \
-            '<p>More info and image formats at <a target = "_blank" href = "%s">%s</a></p>' \
-            % (detail_url, detail_url)
+        html_more_info = '<p>More info and image formats at <a target = "_blank" href = "%s">%s</a></p>'
+        content += html_more_info % (detail_url, detail_url)
         content += '<p>Image: NASA/JPL/University of Arizona </p>'
+
+        if not content: 
+            print 'prepare_content deleted the content?'
 
         return content
 

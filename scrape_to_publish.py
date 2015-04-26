@@ -74,14 +74,11 @@ for detail_url in all_detail_page_urls:
         # this hasn't been published to WP yet OR we are only posting to api
         found = True
         print 'fetching data from ' + detail_url
-        (title, content, detail_url, local_img_file, img_url) = scrape.grab_content_from_detail_page(detail_url)        
-        """
-        try:
-            (title, content, detail_url, local_img_file, img_url) = scrape.grab_content_from_detail_page(detail_url)
-        except:
-            print 'nope'
+        this_scrape = scrape.grab_content_from_detail_page(detail_url)
+        if not this_scrape:
+            print 'scrape.grab_content_from_detail_page returned False'
             continue  # move along
-        """
+        (title, content, detail_url, local_img_file, img_url) = this_scrape
 
         print 'posting to WP: ' + title
         # post to WP
