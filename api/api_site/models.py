@@ -11,7 +11,7 @@ class DetailPage(models.Model):
     slug = models.SlugField()
     content = models.TextField()
     detail_url = models.CharField(max_length=250, unique=True)
-    img_url = models.CharField(max_length=255)
+    img_url = models.CharField(max_length=255, null=True, blank=True)
     credit = models.CharField(max_length=30)
     
     def __unicode__(self):

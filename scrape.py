@@ -85,50 +85,6 @@ class Scrape:
 
         return (title, content, detail_url)
 
-    def grab_large_image_base64(self, detail_url):
-
-        img_id = detail_url.split('/')[-1]
-
-        # add the base wallpapers url you can view all the sizes they have available..
-        # we are doing to go looking for sizes, this lists the sizes we want in order of 
-        # our preference
-        size_list = ['1280', '1440','1600','1920','2048','2560','2880','1152','1024','800']
-
-        if not img_id:
-            print "could not find img_id from " + detail_url
-            return False
-
-        for sz in size_list: 
-            url = '%s%s/%s.jpg' % (self.base_url_wallpapers, sz, img_id)
-            local_file = self.fetch_remote_file(url, True)
-
-            if local_file:
-
-                image_upload = {'name': local_img_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
-
-                with open(local_file, 'rb') as img:
-                    image_upload['bits'] = xmlrpc_client.Binary(img.read())
-
-                    print 'found remote image ' + url 
-
-                    try:
-                        response = wp.call(media.UploadFile(image_upload))
-                        return response['id']
-                    except:
-
-                         # occasionally response is 404, wait and try again
-                        if retry:
-                            print 'sleep 3'
-                            sleep(3)
-                            # call self again
-                            return self.post_to_wordpress(title, content, detail_url, False)
-                        else:
-                            print "couldn't connect to WP 2x to post image upload"
-                            print local_img_file
-                            print "post_to_wordpress returning false"
-                            return False
-                    
-
 
     def prepare_content(self, content, detail_url):
         """
@@ -177,5 +133,23 @@ class Scrape:
                 print "can't fetch remote file " + url
                 return False
 
+    def fetch_featured_image(self, detail_url):
+        img_id = detail_url.split('/')[-1]
+
+        # add the base wallpapers url you can view all the sizes they have available..
+        # we are doing to go looking for sizes, this lists the sizes we want in order of 
+        # our preference
+        size_list = ['1280', '1440','1600','1920','2048','2560','2880','1152','1024','800']
+
+        if not img_id:
+            print "could not find img_id from " + detail_url
+            return False
+
+        for sz in size_list: 
+            url = '%s%s/%s.jpg' % (self.base_url_wallpapers, sz, img_id)
+            local_file = self.fetch_remote_file(url, True)
+
+            if local_file:
+                return local_file, url
 
 

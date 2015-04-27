@@ -30,7 +30,7 @@ class WPPublish:
         # read the binary file and let the XMLRPC library encode it into base64
         print "read the binary file %s and let the XMLRPC library encode it into base64" % local_img_file
 
-        image_upload_id = scrape.grab_large_image_base64(detail_url)
+        image_upload_id, orig_img_url = self.post_image(detail_url)
 
         # now post the post and the image
         post = WordPressPost()
@@ -65,5 +65,39 @@ class WPPublish:
 
         return all_post_ids
 
+
+    def post_image(self, detail_url):
+
+        (local_file, img_url) = scrape.fetch_featured_image(detail_url)
+
+        image_upload = {'name': local_img_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
+
+        with open(local_file, 'rb') as img:
+            image_upload['bits'] = xmlrpc_client.Binary(img.read())
+
+            print 'found remote image ' + img_url 
+
+            try:
+                response = wp.call(media.UploadFile(image_upload))
+                return (response['id'], url)
+            except:
+
+                 # occasionally response is 404, wait and try again
+                if retry:
+                    print 'sleep 3'
+                    sleep(3)
+                    # call self again
+                    return self.post_to_wordpress(title, content, detail_url, False)
+                else:
+                    print "couldn't connect to WP 2x to post image upload"
+                    print local_img_file
+                    print "post_to_wordpress returning false"
+                    return False
+    
+
+            print "no suitable images found at " + url 
+            print "post_to_wordpress returning false"
+            return False
+                    
 
 

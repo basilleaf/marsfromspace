@@ -16,6 +16,8 @@ python scrape_to_publish.py 88 90
 It also adds the published entry into the API database (for the tastypie api)
 
 """
+debug = True
+
 import sys
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.settings")
@@ -43,7 +45,10 @@ local_img_dir = '/app/tmp/'
 scrape = Scrape(base_url=base_url, local_img_dir=local_img_dir, base_url_wallpapers=base_url_wallpapers)
 wp_publish = WPPublish()
 
-previously_published = wp_publish.get_all_published()
+if not debug:
+    previously_published = wp_publish.get_all_published()
+else:
+    previously_published = []
 
 # grab links to all the detail pages we need
 all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_max)
@@ -81,8 +86,6 @@ for detail_url in all_detail_page_urls:
 
     (title, content, detail_url) = this_scrape
 
-    local_img_file = scrape.grab_large_image(detail_url)
-
     print 'posting to WP: ' + title
     print local_img_file
     # post to WP
@@ -92,7 +95,7 @@ for detail_url in all_detail_page_urls:
 
         # post to api (if not already there)
         try: 
-            obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
+            obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url)
         except: 
             pass  # it was already in the database ?? todo: this in IntegrityError from Django but I'm not getting how to catch it here
     else: 
