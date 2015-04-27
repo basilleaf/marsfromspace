@@ -122,10 +122,17 @@ class Scrape:
 
     def fetch_remote_file(self, url, repeat):
         local_file = self.local_img_dir + url.split('/')[-1]
+
+        # check that remote file exists
         try:
-            print 'making ' + str(local_file)
+            resp = urllib2.urlopen(url)
+        except HTTPError:
+            return False  # url does not exist
+
+        try:
             urllib.urlretrieve(url, local_file)
             with open(local_file):
+                print "got image " + url + " at " + local_file
                 pass
             return local_file
         except IOError:
@@ -138,15 +145,14 @@ class Scrape:
 
     def fetch_featured_image(self, detail_url):
         img_id = detail_url.split('/')[-1]
+        if not img_id:
+            print "could not find img_id from " + detail_url
+            return False
 
         # add the base wallpapers url you can view all the sizes they have available..
         # we are doing to go looking for sizes, this lists the sizes we want in order of 
         # our preference
         size_list = ['1280', '1440','1600','1920','2048','2560','2880','1152','1024','800']
-
-        if not img_id:
-            print "could not find img_id from " + detail_url
-            return False
 
         for sz in size_list: 
             url = '%s%s/%s.jpg' % (self.base_url_wallpapers, sz, img_id)
