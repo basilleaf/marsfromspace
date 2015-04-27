@@ -2,6 +2,17 @@
 
 jQuery(function($) {
 
+	 // if this is detail page, make teh big image link back to the hirise original page
+	 // the linkback element holds the original hiris url  
+	 if ($('.linkback').is(':visible')) {
+	 	// the linkback element holds the original hiris url  
+	 	// link the featured image to this url
+	 	link = $('.linkback').data('linkback')
+	 	console.log(link)
+	 	$('img.wp-post-image').wrap('<a href = "' + link + '"></a>');
+	 	console.log('ok')
+	 }
+
 	/**
 	 * Mobile Navigation
 	 */
