@@ -101,7 +101,8 @@ for detail_url in all_detail_page_urls:
         print "moving along"
         continue
 
-    print 'posting to WP: ' + title
+    print 'posting to WP: ' 
+    print title.encode('utf-8').strip()
     print orig_image_url
     # post to WP
 
