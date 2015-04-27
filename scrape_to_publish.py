@@ -94,7 +94,7 @@ for detail_url in all_detail_page_urls:
         # post to api (if not already there)
         try: 
             obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
-        except django.db.utils.IntegrityError: 
+        except IntegrityError: 
             pass  # it was already in the database
     else: 
         print "could not post, wp_publish.post_to_wordpress returned False"
