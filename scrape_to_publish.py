@@ -39,13 +39,9 @@ base_url = 'http://hirise.lpl.arizona.edu/releases/all_captions.php'
 base_url_wallpapers = 'http://static.uahirise.org/images/wallpaper/'
 local_img_dir = '/app/tmp/'
 
-published_url = 'https://s3.amazonaws.com/marsfromspace/published.txt'
-response = urllib2.urlopen(published_url)
-previously_published = [p.rstrip() for p in response.readlines()]
-
 # setup some tools
 scrape = Scrape(base_url=base_url, local_img_dir=local_img_dir, base_url_wallpapers=base_url_wallpapers)
-wp_publish = WPPublish(published_url=published_url, previously_published=previously_published)
+wp_publish = WPPublish(published_url=published_url)
 
 # grab links to all the detail pages we need
 all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_max)
@@ -81,7 +77,7 @@ for detail_url in all_detail_page_urls:
         (title, content, detail_url) = this_scrape
 
         local_img_file = scrape.grab_large_image(detail_url)
-        
+
         print 'posting to WP: ' + title
         print this_scrape
         print local_img_file

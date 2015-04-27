@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import urllib2
+import json
 from time import sleep
-import boto
 from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.methods.posts import NewPost
 from wordpress_xmlrpc.methods import media
@@ -16,23 +16,6 @@ class WPPublish:
 
     def __init__(self, **kwargs):
         self.published_url = kwargs['published_url']
-        self.previously_published = kwargs['previously_published']
-
-    def log_as_published(self, img_id):
-
-        # grab previously published
-
-        self.previously_published.append(img_id)
-
-        # update the published log
-
-        s3 = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_ACCESS_KEY_ID)
-        bucket = s3.create_bucket(BUCKET_NAME)
-        key_name = self.published_url.split('/').pop()
-        bucket.delete_key(key_name)
-        key = bucket.new_key(key_name)
-        key.set_contents_from_string('\n'.join(self.previously_published))
-        key.set_acl('public-read')
 
     def post_to_wordpress(
         self,
@@ -40,13 +23,16 @@ class WPPublish:
         content,
         detail_url,
         local_img_file,
-        previously_published,
         retry,
         ):
         
-        response = urllib2.urlopen(self.published_url)
-        previously_published = [p.rstrip() for p in response.readlines()]
+        img_id = detail_url.split('/')[-1]
+        if img_id in self.previously_published():
+            print "this id has been previously published " + img_id
+            return False
 
+        response = urllib2.urlopen(self.published_url)
+        
         # first upload the image
 
         data = {'name': local_img_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
@@ -54,7 +40,7 @@ class WPPublish:
         wp = Client('http://www.marsfromspace.com/xmlrpc.php', WP_USER, WP_PW)
 
         # read the binary file and let the XMLRPC library encode it into base64
-        print "read the binary file and let the XMLRPC library encode it into base64"
+        print "read the binary file %s and let the XMLRPC library encode it into base64" % local_img_file
         with open(local_img_file, 'rb') as img:
             data['bits'] = xmlrpc_client.Binary(img.read())
 
@@ -73,7 +59,6 @@ class WPPublish:
                     content,
                     detail_url,
                     local_img_file,
-                    previously_published,
                     False,
                     )
             else:
@@ -92,32 +77,26 @@ class WPPublish:
 
         if wp.call(NewPost(post)):
             img_id = local_img_file.split('/')[-1].split('.')[0]
-            self.log_as_published(img_id)
+            
 
         return True
 
-    def remove_from_published(self, img_id):
-        """
-        mostly a utility func
-        """
+    def get_all_published(self):
+        wp_site_json = 'http://www.marsfromspace.com/?json=1&post_type=portfolio'
+        response = urllib2.urlopen(wp_site_json)
+        data = json.load(response)
+        total_pages = data['pages']
 
-        # get the previously published list
+        all_post_ids = []
+        for p in range(total_pages):
+            this_url = wp_site_json + "&page=" + str(p)
+            response = urllib2.urlopen(this_url)
+            data = json.load(response)
+            for post in data['posts']:
+                img_id = post['thumbnail_images']['full']['url'].split('/')[-1].split('.')[0]
+                all_post_ids.append(img_id)
 
-        response = urllib2.urlopen(self.published_url)
-        self.previously_published = [p.rstrip() for p in response.readlines()]
+        return all_post_ids
 
-        # grab previously published
 
-        if img_id not in self.previously_published:
-            return 'img_id not found in previously_published'
-        self.previously_published.remove(img_id)
-
-        # update the published log
-        s3 = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
-        bucket = s3.create_bucket(BUCKET_NAME)
-        key_name = self.published_url.split('/').pop()
-        bucket.delete_key(key_name)
-        key = bucket.new_key(key_name)
-        key.set_contents_from_string('\n'.join(self.previously_published))
-        key.set_acl('public-read')
 
