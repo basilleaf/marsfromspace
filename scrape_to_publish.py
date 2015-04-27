@@ -68,33 +68,36 @@ for detail_url in all_detail_page_urls:
 
     img_id = detail_url.split('/')[-1]
 
-    if img_id not in previously_published:
-        # this hasn't been published to WP yet OR we are only posting to api
-        print 'fetching data from ' + detail_url
-        this_scrape = scrape.grab_content_from_detail_page(detail_url)
-        if not this_scrape:
-            print 'scrape.grab_content_from_detail_page returned False'
-            continue  # move along
+    if img_id in previously_published:
+        print "wp site says this is published already %s moving along" % img_id
+        continue
 
-        (title, content, detail_url) = this_scrape
+    # this hasn't been published to WP yet OR we are only posting to api
+    print 'fetching data from ' + detail_url
+    this_scrape = scrape.grab_content_from_detail_page(detail_url)
+    if not this_scrape:
+        print 'scrape.grab_content_from_detail_page returned False'
+        continue  # move along
 
-        local_img_file = scrape.grab_large_image(detail_url)
+    (title, content, detail_url) = this_scrape
 
-        print 'posting to WP: ' + title
-        print this_scrape
-        print local_img_file
-        # post to WP
-        wp_posted = wp_publish.post_to_wordpress(title, content, detail_url, local_img_file, previously_published, True)
-        if wp_posted: 
-            post_count = post_count + 1
+    local_img_file = scrape.grab_large_image(detail_url)
 
-            # post to api (if not already there)
-            try: 
-                obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
-            except django.db.utils.IntegrityError: 
-                pass  # it was already in the database
-        else: 
-            print "could not post, wp_publish.post_to_wordpress returned False"
+    print 'posting to WP: ' + title
+    print this_scrape
+    print local_img_file
+    # post to WP
+    wp_posted = wp_publish.post_to_wordpress(title, content, detail_url, local_img_file, previously_published, True)
+    if wp_posted: 
+        post_count = post_count + 1
+
+        # post to api (if not already there)
+        try: 
+            obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
+        except django.db.utils.IntegrityError: 
+            pass  # it was already in the database
+    else: 
+        print "could not post, wp_publish.post_to_wordpress returned False"
 
 if post_count:
     print 'all links were previously published'

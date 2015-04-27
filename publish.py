@@ -23,11 +23,6 @@ class WPPublish:
         retry,
         ):
         
-        img_id = detail_url.split('/')[-1]
-        if img_id in self.previously_published():
-            print "this id has been previously published " + img_id
-            return False
-
         # first upload the image
 
         data = {'name': local_img_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
