@@ -78,7 +78,7 @@ class WPPublish:
                     False,
                     )
             else:
-                print "couldn't connect to WP 2x,  moving along.."
+                print "couldn't connect to WP 2x,  returning False"
                 return False
 
         # now post the post and the image
@@ -93,6 +93,8 @@ class WPPublish:
         if wp.call(NewPost(post)):
             img_id = local_img_file.split('/')[-1].split('.')[0]
             self.log_as_published(img_id)
+
+        return True
 
     def remove_from_published(self, img_id):
         """

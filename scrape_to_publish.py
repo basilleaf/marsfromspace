@@ -52,7 +52,6 @@ all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_ma
 # set to False if you don't wnat to publish to Wordpress
 # this will also cause it to ignore previously published list
 # grab content each page and publish to api and perhaps WP too
-found = False
 post_count = 0
 last_page = 0
 for detail_url in all_detail_page_urls:
@@ -72,7 +71,6 @@ for detail_url in all_detail_page_urls:
 
     if img_id not in previously_published:
         # this hasn't been published to WP yet OR we are only posting to api
-        found = True
         print 'fetching data from ' + detail_url
         this_scrape = scrape.grab_content_from_detail_page(detail_url)
         if not this_scrape:
@@ -82,16 +80,21 @@ for detail_url in all_detail_page_urls:
 
         print 'posting to WP: ' + title
         # post to WP
-        wp_publish.post_to_wordpress(title, content, detail_url, local_img_file, previously_published, True)
-        post_count = post_count + 1
+        wp_posted = wp_publish.post_to_wordpress(title, content, detail_url, local_img_file, previously_published, True)
+        if wp_posted: 
+            post_count = post_count + 1
 
-        # post to api (if not already there)
-        try: 
-            obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
-        except django.db.utils.IntegrityError: 
-            pass  # it was already in the database
+            # post to api (if not already there)
+            try: 
+                obj, created = DetailPage.objects.get_or_create(title=title, content=content, detail_url=detail_url, img_url=img_url)
+            except django.db.utils.IntegrityError: 
+                pass  # it was already in the database
+        else: 
+            print "could not post, wp_publish.post_to_wordpress returned False"
 
-
-if not found:
+if post_count:
     print 'all links were previously published'
+else: 
+    print 'NOTHING PUBLISHED'
+
 print 'Bye!'
