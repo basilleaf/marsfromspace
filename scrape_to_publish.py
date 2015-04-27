@@ -84,7 +84,6 @@ for detail_url in all_detail_page_urls:
     local_img_file = scrape.grab_large_image(detail_url)
 
     print 'posting to WP: ' + title
-    print this_scrape
     print local_img_file
     # post to WP
     wp_posted = wp_publish.post_to_wordpress(title, content, detail_url, local_img_file, True)
