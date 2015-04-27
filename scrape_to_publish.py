@@ -86,10 +86,13 @@ for detail_url in all_detail_page_urls:
 
     (title, content, detail_url) = this_scrape
 
+    # post the image
+    image_upload_id, local_img_file = self.post_image(detail_url)
+
     print 'posting to WP: ' + title
     print local_img_file
     # post to WP
-    wp_posted = wp_publish.post_to_wordpress(title, content, detail_url, True)
+    wp_posted = wp_publish.post_to_wordpress(title, content, detail_url, image_upload_id, True)
     if wp_posted: 
         post_count = post_count + 1
 

@@ -19,6 +19,7 @@ class WPPublish:
         title,
         content,
         detail_url,
+        image_upload_id,
         retry,
         ):
         
@@ -29,8 +30,6 @@ class WPPublish:
 
         # read the binary file and let the XMLRPC library encode it into base64
         print "read the binary file %s and let the XMLRPC library encode it into base64" % local_img_file
-
-        image_upload_id, orig_img_url = self.post_image(detail_url)
 
         # now post the post and the image
         post = WordPressPost()
@@ -87,7 +86,7 @@ class WPPublish:
                     print 'sleep 3'
                     sleep(3)
                     # call self again
-                    return self.post_to_wordpress(title, content, detail_url, False)
+                    return self.post_to_wordpress(title, content, detail_url, image_upload_id, False)
                 else:
                     print "couldn't connect to WP 2x to post image upload"
                     print local_img_file
