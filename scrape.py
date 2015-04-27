@@ -126,7 +126,7 @@ class Scrape:
         # check that remote file exists
         try:
             resp = urllib2.urlopen(url)
-        except HTTPError:
+        except urllib2.HTTPError:
             return False  # url does not exist
 
         try:
