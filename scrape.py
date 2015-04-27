@@ -83,6 +83,9 @@ class Scrape:
         content = soup_content.prettify()
         content = self.prepare_content(content, detail_url)
 
+        linkback = '<div class = "linkback" data-linkback="%s"></div>' % detail_url
+        content = linkback + content
+        
         return (title, content, detail_url)
 
 
