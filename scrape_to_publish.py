@@ -111,7 +111,7 @@ for detail_url in all_detail_page_urls:
         print "could not post, wp_publish.post_to_wordpress returned False"
 
 if post_count:
-    print 'all links were previously published'
+    print 'finished publishing!'
 else: 
     print 'NOTHING PUBLISHED'
 
