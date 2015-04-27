@@ -77,6 +77,7 @@ class WPPublish:
         return True
 
     def get_all_published(self):
+        print 'getting previously published, this is slow.. '
         wp_site_json = 'http://www.marsfromspace.com/?json=1&post_type=portfolio'
         response = urllib2.urlopen(wp_site_json)
         data = json.load(response)
@@ -84,6 +85,7 @@ class WPPublish:
 
         all_post_ids = []
         for p in range(total_pages):
+            print 'getting previously published page ' + str(p)
             this_url = wp_site_json + "&page=" + str(p)
             response = urllib2.urlopen(this_url)
             data = json.load(response)
