@@ -46,9 +46,11 @@ class WPPublish:
         total_pages = data['pages']
 
         all_post_ids = []
+        print "looking at %s pages: " % str(total_pages)
         for p in range(total_pages):
-            print 'getting previously published page ' + str(p)
-            this_url = wp_site_json + "&page=" + str(p)
+            page_no = str(p + 1)
+            print 'getting previously published page ' + str(page_no)
+            this_url = wp_site_json + "&page=" + str(page_no)
             print this_url
             response = urllib2.urlopen(this_url)
             data = json.load(response)
