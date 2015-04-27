@@ -89,7 +89,7 @@ for detail_url in all_detail_page_urls:
     # post the image
     try:
         image_upload_id, orig_image_url = wp_publish.post_image(detail_url, scrape, True)
-    except KeyError:
+    except TypeError:
         # could not find an image to upload, move along
         print "moving along"
         continue

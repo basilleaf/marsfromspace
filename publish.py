@@ -49,6 +49,7 @@ class WPPublish:
         for p in range(total_pages):
             print 'getting previously published page ' + str(p)
             this_url = wp_site_json + "&page=" + str(p)
+            print this_url
             response = urllib2.urlopen(this_url)
             data = json.load(response)
             for post in data['posts']:
@@ -62,7 +63,7 @@ class WPPublish:
 
         try:
             (local_file, img_url) = scrape.fetch_featured_image(detail_url)
-        except KeyError:
+        except TypeError:
             print "could not find a featured image, doing nothing"
             return False
 
