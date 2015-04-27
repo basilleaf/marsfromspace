@@ -73,7 +73,8 @@ for detail_url in all_detail_page_urls:
         print "finished publishing " + str(posts_limit) + " posts, see you tomorrow."
         break;
 
-    img_id = detail_url.split('/')[-1]
+    img_id = detail_url.split('/')[-1].split('.')[0]
+    print 'checking if ' + img_id + ' is prev published'
 
     for img_url_pub in previously_published:
         if img_id in img_url_pub:
