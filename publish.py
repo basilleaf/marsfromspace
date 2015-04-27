@@ -14,6 +14,10 @@ class WPPublish:
     for publishing to WP
     """
 
+    def __init__(self, **kwargs):
+        self.wp = Client('http://www.marsfromspace.com/xmlrpc.php', WP_USER, WP_PW)
+
+
     def post_to_wordpress(
         self,
         title,
@@ -26,8 +30,6 @@ class WPPublish:
         # first upload the image
 
         
-        wp = Client('http://www.marsfromspace.com/xmlrpc.php', WP_USER, WP_PW)
-
         # read the binary file and let the XMLRPC library encode it into base64
         print "read the binary file %s and let the XMLRPC library encode it into base64" % local_img_file
 
@@ -39,7 +41,7 @@ class WPPublish:
         post.post_status = 'publish'
         post.thumbnail = image_upload_id
 
-        if wp.call(NewPost(post)):
+        if self.wp.call(NewPost(post)):
             img_id = local_img_file.split('/')[-1].split('.')[0]
             
 
@@ -76,12 +78,12 @@ class WPPublish:
 
             print 'uploading remote image ' + img_url + '  to wp'
 
-            response = wp.call(media.UploadFile(image_upload))
+            response = self.wp.call(media.UploadFile(image_upload))
             return (response['id'], img_url)
 
             """
             try:
-                response = wp.call(media.UploadFile(image_upload))
+                response = self.wp.call(media.UploadFile(image_upload))
                 return (response['id'], url)
             except:
 
