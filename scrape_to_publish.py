@@ -50,6 +50,8 @@ if not debug:
 else:
     previously_published = []
 
+print previously_published
+
 # grab links to all the detail pages we need
 all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_max)
 
@@ -77,6 +79,10 @@ for detail_url in all_detail_page_urls:
         if img_id in img_url_pub:
             print "wp site says this is published already %s moving along" % img_id
             continue
+
+    if img_id == 'PSP_002033_1325':
+        print 'this one is weirrrrrrrrd'
+        print img_url_pub
 
     # this hasn't been published to WP yet OR we are only posting to api
     print 'fetching data from ' + detail_url

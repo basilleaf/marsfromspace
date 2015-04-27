@@ -56,7 +56,7 @@ class WPPublish:
             data = json.load(response)
             for post in data['posts']:
                 url = post['thumbnail_images']['full']['url']
-                print url
+                # print url
                 all_post_img_urls.append(url)
 
         return all_post_img_urls
