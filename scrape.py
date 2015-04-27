@@ -92,8 +92,13 @@ class Scrape:
         # our preference
         size_list = ['1280', '1440','1600','1920','2048','2560','2880','1152','1024','800']
 
-        for size in size_list: 
-            url = '%s%s/%s.jpg' % (self.base_url_wallpapers, size, img_id, ".jpg")
+        if not img_id:
+            print "could not find img_id from " + detail_url
+            return False
+            
+        for sz in size_list: 
+            print (self.base_url_wallpapers, sz, img_id, ".jpg")
+            url = '%s%s/%s.jpg' % (self.base_url_wallpapers, sz, img_id, ".jpg")
             local_file = fetch_remote_file(self, url, True)
             if local_file:
                 return local_file
