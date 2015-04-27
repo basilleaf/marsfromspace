@@ -146,7 +146,7 @@ class Scrape:
         except IOError:
             if repeat:  # try again..
                 sleep(3)
-                return self.fetch_remote_file(url, False)
+                return self.fetch_remote_file(self, url, False)
             else:
                 print "can't fetch remote file " + url
                 return False
