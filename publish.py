@@ -31,7 +31,7 @@ class WPPublish:
 
         
         # read the binary file and let the XMLRPC library encode it into base64
-        print "read the binary file %s and let the XMLRPC library encode it into base64" % local_img_file
+        print "read the binary file and let the XMLRPC library encode it into base64"
 
         # now post the post and the image
         post = WordPressPost()
@@ -42,10 +42,7 @@ class WPPublish:
         post.thumbnail = image_upload_id
 
         if self.wp.call(NewPost(post)):
-            img_id = local_img_file.split('/')[-1].split('.')[0]
-            
-
-        return True
+            return True
 
     def get_all_published(self):
         print 'getting previously published, this is slow.. '
