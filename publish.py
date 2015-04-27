@@ -61,7 +61,6 @@ class WPPublish:
 
         return all_post_img_urls
 
-
     def post_image(self, detail_url, scrape, retry):
 
         try:
