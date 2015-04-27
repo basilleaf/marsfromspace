@@ -73,9 +73,10 @@ for detail_url in all_detail_page_urls:
 
     img_id = detail_url.split('/')[-1]
 
-    if img_id in previously_published:
-        print "wp site says this is published already %s moving along" % img_id
-        continue
+    for img_url_pub in previously_published:
+        if img_id in img_url_pub:
+            print "wp site says this is published already %s moving along" % img_id
+            continue
 
     # this hasn't been published to WP yet OR we are only posting to api
     print 'fetching data from ' + detail_url

@@ -45,7 +45,7 @@ class WPPublish:
         data = json.load(response)
         total_pages = data['pages']
 
-        all_post_ids = []
+        all_post_img_urls = []
         print "looking at %s pages: " % str(total_pages)
         for p in range(total_pages):
             page_no = str(p + 1)
@@ -55,10 +55,11 @@ class WPPublish:
             response = urllib2.urlopen(this_url)
             data = json.load(response)
             for post in data['posts']:
-                img_id = post['thumbnail_images']['full']['url'].split('/')[-1].split('.')[0]
-                all_post_ids.append(img_id)
+                url = post['thumbnail_images']['full']['url']
+                print url
+                all_post_img_urls.append(url)
 
-        return all_post_ids
+        return all_post_img_urls
 
 
     def post_image(self, detail_url, scrape, retry):
