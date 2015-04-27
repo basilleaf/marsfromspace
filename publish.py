@@ -5,6 +5,7 @@ from time import sleep
 import boto
 from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.methods.posts import NewPost
+from wordpress_xmlrpc.methods import media
 from wordpress_xmlrpc.compat import xmlrpc_client
 from settings import WP_USER, WP_PW, BUCKET_NAME, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
@@ -53,7 +54,7 @@ class WPPublish:
         wp = Client('http://www.marsfromspace.com/xmlrpc.php', WP_USER, WP_PW)
 
         # read the binary file and let the XMLRPC library encode it into base64
-
+        print "read the binary file and let the XMLRPC library encode it into base64"
         with open(local_img_file, 'rb') as img:
             data['bits'] = xmlrpc_client.Binary(img.read())
 
@@ -62,11 +63,11 @@ class WPPublish:
             attachment_id = response['id']
         except:
 
-                 # occasionally response is 404, wait and try again
-
+             # occasionally response is 404, wait and try again
             if retry:
                 print 'sleep 3'
                 sleep(3)
+                # call self again
                 return self.post_to_wordpress(
                     title,
                     content,
@@ -76,11 +77,12 @@ class WPPublish:
                     False,
                     )
             else:
-                print "couldn't connect to WP 2x,  returning False"
+                print "couldn't connect to WP 2x to post image upload"
+                print local_img_file
+                print "post_to_wordpress returning false"
                 return False
 
         # now post the post and the image
-
         post = WordPressPost()
         post.post_type = 'portfolio'
         post.title = title

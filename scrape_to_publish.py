@@ -35,7 +35,8 @@ page_max = int(sys.argv[2])
 posts_limit = 1  # only publish this many to WP at a time
 
 base_url = 'http://hirise.lpl.arizona.edu/releases/all_captions.php'
-base_url_wallpapers = 'http://hirise.lpl.arizona.edu/'
+# base_url_wallpapers = 'http://hirise.lpl.arizona.edu/'
+base_url_wallpapers = 'http://static.uahirise.org/images/wallpaper/'
 local_img_dir = '/app/tmp/'
 
 published_url = 'https://s3.amazonaws.com/marsfromspace/published.txt'
@@ -77,8 +78,10 @@ for detail_url in all_detail_page_urls:
             print 'scrape.grab_content_from_detail_page returned False'
             continue  # move along
 
-        (title, content, detail_url, local_img_file, img_url) = this_scrape
+        (title, content, detail_url) = this_scrape
 
+        local_img_file = scrape.grab_large_image(detail_url)
+        
         print 'posting to WP: ' + title
         print this_scrape
         print local_img_file

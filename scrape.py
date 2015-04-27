@@ -69,26 +69,6 @@ class Scrape:
 
         soup = BeautifulSoup(index_page)
 
-        img = ''
-        for l in soup.findAll('a'):
-            try:
-                if str(l.contents[0]) == '1280':  # designer lady wants the 1280 image, sometimes there isn't one..
-                    img = str(l.get('href'))
-            except (IndexError, UnicodeEncodeError), e:
-                pass  # none or strange link contents no worries
-
-        if not img:
-            print 'no suitable image found'
-            return False  # if we can't get the 1280 image we are passing on this page ..
-
-        # fetch the image so we have it locally
-        img_url = self.base_url_wallpapers + img
-        local_img_file = ''
-        local_img_file = self.fetch_remote_file(img_url, True)
-        if not local_img_file:
-            print "couldn't fetch remote file, move along"
-            return False
-
         try:
             title = soup.findAll('a', {'id': 'example1'})[0].get('title')
         except IndexError:
@@ -102,7 +82,22 @@ class Scrape:
         content = soup_content.prettify()
         content = self.prepare_content(content, detail_url)
 
-        return (title, content, detail_url, local_img_file, img_url)
+        return (title, content, detail_url)
+
+    def grab_large_image(self, detail_url):
+        img_id = detail_url.split('/')[-1]
+
+        # add the base wallpapers url you can view all the sizes they have available..
+        # we are doing to go looking for sizes, this lists the sizes we want in order of 
+        # our preference
+        size_list = ['1280', '1440','1600','1920','2048','2560','2880','1152','1024','800']
+
+        for size in size_list: 
+            url = '%s%s/%s.jpg' % (self.base_url_wallpapers, size, img_id, ".jpg")
+            local_file = fetch_remote_file(self, url, True)
+            if local_file:
+                return local_file
+
 
     def prepare_content(self, content, detail_url):
         """
