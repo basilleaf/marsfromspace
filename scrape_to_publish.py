@@ -41,7 +41,10 @@ local_img_dir = '/app/tmp/'
 
 # setup some tools
 scrape = Scrape(base_url=base_url, local_img_dir=local_img_dir, base_url_wallpapers=base_url_wallpapers)
-wp_publish = WPPublish(published_url=published_url)
+wp_publish = WPPublish()
+
+previously_published = wp_publish.previously_published()
+
 
 # grab links to all the detail pages we need
 all_detail_page_urls, urls_by_page = scrape.grab_all_page_urls(page_min, page_max)

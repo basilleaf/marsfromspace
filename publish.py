@@ -14,9 +14,6 @@ class WPPublish:
     for publishing to WP
     """
 
-    def __init__(self, **kwargs):
-        self.published_url = kwargs['published_url']
-
     def post_to_wordpress(
         self,
         title,
@@ -31,8 +28,6 @@ class WPPublish:
             print "this id has been previously published " + img_id
             return False
 
-        response = urllib2.urlopen(self.published_url)
-        
         # first upload the image
 
         data = {'name': local_img_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
