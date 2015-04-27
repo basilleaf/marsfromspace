@@ -44,8 +44,8 @@ class Scrape:
 
             try:
                 index_soup = BeautifulSoup(index_page)
-                all_cells = index_soup.findAll('td')  # each listing is in a table cell
-                for cell in all_cells:
+                all_cells = index_soup.findAll('td')[::-1]  # each listing is in a table cell
+                for cell in all_cells:  
                     detail_url = '/'.join(self.base_url.split('/')[:-2]) + '/' + cell.a.get('href').split('/')[1:][0]
                     if detail_url == 'http://hirise.lpl.arizona.edu/releases':
                         continue  ## we don want this one ever
@@ -85,7 +85,7 @@ class Scrape:
 
         linkback = '<div class = "linkback" data-linkback="%s"></div>' % detail_url
         content = linkback + content
-        
+
         return (title, content, detail_url)
 
 
