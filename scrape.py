@@ -161,4 +161,5 @@ class Scrape:
             if local_file:
                 return local_file, url
 
+        return False
 

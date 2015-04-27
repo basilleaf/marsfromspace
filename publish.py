@@ -60,7 +60,11 @@ class WPPublish:
 
     def post_image(self, detail_url, scrape, retry):
 
-        (local_file, img_url) = scrape.fetch_featured_image(detail_url)
+        try:
+            (local_file, img_url) = scrape.fetch_featured_image(detail_url)
+        except KeyError:
+            print "could not find a featured image, doing nothing"
+            return False
 
         image_upload = {'name': local_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
 

@@ -87,7 +87,12 @@ for detail_url in all_detail_page_urls:
     (title, content, detail_url) = this_scrape
 
     # post the image
-    image_upload_id, orig_image_url = wp_publish.post_image(detail_url, scrape, True)
+    try:
+        image_upload_id, orig_image_url = wp_publish.post_image(detail_url, scrape, True)
+    except KeyError:
+        # could not find an image to upload, move along
+        print "moving along"
+        continue
 
     print 'posting to WP: ' + title
     print orig_image_url
