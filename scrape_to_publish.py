@@ -62,7 +62,7 @@ for detail_url in all_detail_page_urls:
 
     this_page = urls_by_page[detail_url]  # track what page of their wesite we are currently on
     if last_page != this_page:
-        print "starting page " + str(this_page)
+        print "-----> starting page " + str(this_page)
     last_page = this_page
 
 
