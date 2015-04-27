@@ -99,7 +99,7 @@ class Scrape:
         for sz in size_list: 
             print (self.base_url_wallpapers, sz, img_id, ".jpg")
             url = '%s%s/%s.jpg' % (self.base_url_wallpapers, sz, img_id)
-            local_file = fetch_remote_file(self, url, True)
+            local_file = self.fetch_remote_file(self, url, True)
             if local_file:
                 return local_file
 
