@@ -27,12 +27,6 @@ class WPPublish:
         retry,
         ):
         
-        # first upload the image
-
-        
-        # read the binary file and let the XMLRPC library encode it into base64
-        print "read the binary file and let the XMLRPC library encode it into base64"
-
         # now post the post and the image
         post = WordPressPost()
         post.post_type = 'portfolio'
