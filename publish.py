@@ -65,17 +65,21 @@ class WPPublish:
         return all_post_ids
 
 
-    def post_image(self, detail_url):
+    def post_image(self, detail_url, scrape, retry):
 
         (local_file, img_url) = scrape.fetch_featured_image(detail_url)
 
-        image_upload = {'name': local_img_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
+        image_upload = {'name': local_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
 
         with open(local_file, 'rb') as img:
             image_upload['bits'] = xmlrpc_client.Binary(img.read())
 
-            print 'found remote image ' + img_url 
+            print 'uploading remote image ' + img_url + '  to wp'
 
+            response = wp.call(media.UploadFile(image_upload))
+            return (response['id'], img_url)
+
+            """
             try:
                 response = wp.call(media.UploadFile(image_upload))
                 return (response['id'], url)
@@ -84,19 +88,20 @@ class WPPublish:
                  # occasionally response is 404, wait and try again
                 if retry:
                     print 'sleep 3'
-                    sleep(3)
+                    sleep(2)
                     # call self again
-                    return self.post_to_wordpress(title, content, detail_url, image_upload_id, False)
+                    return self.post_image(detail_url, scrape, False)
                 else:
                     print "couldn't connect to WP 2x to post image upload"
-                    print local_img_file
+                    print local_file
                     print "post_to_wordpress returning false"
                     return False
-    
+        
 
             print "no suitable images found at " + url 
             print "post_to_wordpress returning false"
             return False
+            """
                     
 
 
