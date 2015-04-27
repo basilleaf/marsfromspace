@@ -95,10 +95,10 @@ class Scrape:
         if not img_id:
             print "could not find img_id from " + detail_url
             return False
-            
+
         for sz in size_list: 
             print (self.base_url_wallpapers, sz, img_id, ".jpg")
-            url = '%s%s/%s.jpg' % (self.base_url_wallpapers, sz, img_id, ".jpg")
+            url = '%s%s/%s.jpg' % (self.base_url_wallpapers, sz, img_id)
             local_file = fetch_remote_file(self, url, True)
             if local_file:
                 return local_file
