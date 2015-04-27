@@ -5,6 +5,7 @@ from time import sleep
 import urllib
 import urllib2
 from bs4 import BeautifulSoup
+from wordpress_xmlrpc.methods import media
 
 class Scrape:
     """
@@ -84,7 +85,8 @@ class Scrape:
 
         return (title, content, detail_url)
 
-    def grab_large_image(self, detail_url):
+    def grab_large_image_base64(self, detail_url):
+
         img_id = detail_url.split('/')[-1]
 
         # add the base wallpapers url you can view all the sizes they have available..
@@ -99,9 +101,33 @@ class Scrape:
         for sz in size_list: 
             url = '%s%s/%s.jpg' % (self.base_url_wallpapers, sz, img_id)
             local_file = self.fetch_remote_file(url, True)
+
             if local_file:
-                print 'found remote image ' + url 
-                return local_file
+
+                image_upload = {'name': local_img_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
+
+                with open(local_file, 'rb') as img:
+                    image_upload['bits'] = xmlrpc_client.Binary(img.read())
+
+                    print 'found remote image ' + url 
+
+                    try:
+                        response = wp.call(media.UploadFile(image_upload))
+                        return response['id']
+                    except:
+
+                         # occasionally response is 404, wait and try again
+                        if retry:
+                            print 'sleep 3'
+                            sleep(3)
+                            # call self again
+                            return self.post_to_wordpress(title, content, detail_url, False)
+                        else:
+                            print "couldn't connect to WP 2x to post image upload"
+                            print local_img_file
+                            print "post_to_wordpress returning false"
+                            return False
+                    
 
 
     def prepare_content(self, content, detail_url):

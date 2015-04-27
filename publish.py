@@ -19,43 +19,18 @@ class WPPublish:
         title,
         content,
         detail_url,
-        local_img_file,
         retry,
         ):
         
         # first upload the image
 
-        data = {'name': local_img_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
-
+        
         wp = Client('http://www.marsfromspace.com/xmlrpc.php', WP_USER, WP_PW)
 
         # read the binary file and let the XMLRPC library encode it into base64
         print "read the binary file %s and let the XMLRPC library encode it into base64" % local_img_file
-        with open(local_img_file, 'rb') as img:
-            data['bits'] = xmlrpc_client.Binary(img.read())
 
-        try:
-            response = wp.call(media.UploadFile(data))
-            attachment_id = response['id']
-        except:
-
-             # occasionally response is 404, wait and try again
-            if retry:
-                print 'sleep 3'
-                sleep(3)
-                # call self again
-                return self.post_to_wordpress(
-                    title,
-                    content,
-                    detail_url,
-                    local_img_file,
-                    False,
-                    )
-            else:
-                print "couldn't connect to WP 2x to post image upload"
-                print local_img_file
-                print "post_to_wordpress returning false"
-                return False
+        image_upload_id = scrape.grab_large_image_base64(detail_url)
 
         # now post the post and the image
         post = WordPressPost()
@@ -63,7 +38,7 @@ class WPPublish:
         post.title = title
         post.content = content
         post.post_status = 'publish'
-        post.thumbnail = attachment_id
+        post.thumbnail = image_upload_id
 
         if wp.call(NewPost(post)):
             img_id = local_img_file.split('/')[-1].split('.')[0]
