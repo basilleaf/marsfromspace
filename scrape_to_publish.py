@@ -16,7 +16,8 @@ python scrape_to_publish.py 88 90
 It also adds the published entry into the API database (for the tastypie api)
 
 """
-debug = True
+debug = True  # will wp publish w/o checking for what's already been published
+
 
 import sys
 import os
@@ -34,7 +35,7 @@ if not sys.argv[1]:
 page_min = int(sys.argv[1])
 page_max = int(sys.argv[2])
 
-posts_limit = 1  # only publish this many to WP at a time
+posts_limit = 15  # only publish this many to WP at a time
 
 base_url = 'http://hirise.lpl.arizona.edu/releases/all_captions.php'
 # base_url_wallpapers = 'http://hirise.lpl.arizona.edu/'
