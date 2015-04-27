@@ -42,17 +42,15 @@ class WPPublish:
         previously_published,
         retry,
         ):
+        
         response = urllib2.urlopen(self.published_url)
-        previously_published = [p.rstrip() for p in
-                                response.readlines()]
+        previously_published = [p.rstrip() for p in response.readlines()]
 
         # first upload the image
 
-        data = {'name': local_img_file.split('/')[-1],
-                'type': 'image/jpg'}  # mimetype
+        data = {'name': local_img_file.split('/')[-1], 'type': 'image/jpg'}  # mimetype
 
-        wp = Client('http://www.marsfromspace.com/xmlrpc.php', WP_USER,
-                    WP_PW)
+        wp = Client('http://www.marsfromspace.com/xmlrpc.php', WP_USER, WP_PW)
 
         # read the binary file and let the XMLRPC library encode it into base64
 
