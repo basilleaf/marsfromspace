@@ -31,7 +31,7 @@ class Scrape:
 
         all_links = []
         urls_by_page = {}
-        for i in range(page_max + 1, page_min, -1):
+        for i in range(page_max + 1, page_min-1, -1):
 
             url = self.base_url + '?page=%s' % str(i)
             page_urls.append(self.base_url + '?page=%s' % str(i))
